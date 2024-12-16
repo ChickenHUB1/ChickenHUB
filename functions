@@ -2,16 +2,19 @@ local f = {}
 
 function f.game8200787440(Window) -- eat blobs simulator
 	local Tab = Window:CreateTab("Eat Blobs Simulator", nil) -- Title, Image
-
-
+	
 	local Toggle = Tab:CreateToggle({
 		Name = "Toggle collect orbs",
 		CurrentValue = false,
 		Flag = "CollectOrbsToggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 		Callback = function(Value)
 			for _,v in pairs(workspace.Orbs:GetChildren()) do
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame * CFrame.new(0, -1, 0)
-				wait(0.1)
+				if Value then
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame * CFrame.new(0, -1, 0)
+					wait(0.1)
+				else
+					break
+				end
 			end   -- The variable (Value) is a boolean on whether the toggle is true or false
 		end,
 	})
