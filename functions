@@ -66,6 +66,12 @@ end
 function f:RunFunction(placeid, Window)
 	if placeid then
 		f["game"..placeid](Window)
+	else
+		Rayfield:Notify({
+			Title = "PlaceID - ERROR",
+			Content = "An internal error had occured. If this is reoccuring, contact script publishers.",
+			Duration = 7.5
+		})
 	end
 end
 
