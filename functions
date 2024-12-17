@@ -4,8 +4,12 @@ function f.game8200787440(Window) -- eat blobs simulator
 	local Tab = Window:CreateTab("Eat Blobs Simulator", nil) -- Title, Image
 	
 	local function CollectOrbs(value: BoolValue)
+		if value == false then
+			return
+		end
+		
 		for _,v in pairs(workspace.Orbs:GetChildren()) do
-			if value then
+			if value == true then
 				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame * CFrame.new(0, -1, 0)
 				wait(0.1)
 			else
