@@ -1,6 +1,8 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
 local f = {}
 
-function f.game8200787440(Window, Rayfield) -- eat blobs simulator
+function f.game8200787440(Window) -- eat blobs simulator
 	local Tab = Window:CreateTab("Eat Blobs Simulator", nil) -- Title, Image
 	local Enabled = false
 	
@@ -61,9 +63,9 @@ function f.game8200787440(Window, Rayfield) -- eat blobs simulator
 	})
 end
 
-function f:RunFunction(placeid, Window, Rayfield)
+function f:RunFunction(placeid, Window)
 	if placeid then
-		f["game"..placeid](Window, Rayfield)
+		f["game"..placeid](Window)
 	end
 end
 
