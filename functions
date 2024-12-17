@@ -33,7 +33,6 @@ function f.game8200787440(Window) -- eat blobs simulator
 		Flag = "CollectOrbsToggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 		Callback = function(Value)
 			Enabled = Value
-			CollectOrbs()
 			
 			if Enabled then
 				Rayfield:Notify({
@@ -48,6 +47,8 @@ function f.game8200787440(Window) -- eat blobs simulator
 					Duration = 2.5
 				})
 			end
+			
+			CollectOrbs()
 		end,
 	})
 	local Slider = Tab:CreateSlider({
