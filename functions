@@ -9,6 +9,10 @@ function f.game8200787440(Window) -- eat blobs simulator
 		end
 		
 		for _,v in pairs(workspace.Orbs:GetChildren()) do
+			if value == false then
+				break
+			end
+			
 			if value == true then
 				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame * CFrame.new(0, -1, 0)
 				wait(0.1)
