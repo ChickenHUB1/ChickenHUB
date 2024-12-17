@@ -1,6 +1,6 @@
 local f = {}
 
-function f.game8200787440(Window) -- eat blobs simulator
+function f.game8200787440(Window, Rayfield) -- eat blobs simulator
 	local Tab = Window:CreateTab("Eat Blobs Simulator", nil) -- Title, Image
 	local Enabled = false
 	
@@ -9,27 +9,43 @@ function f.game8200787440(Window) -- eat blobs simulator
 			return
 		end
 		
-		for _,v in pairs(workspace.Orbs:GetChildren()) do
-			if Enabled == false then
-				break
-			end
-			
-			if Enabled == true then
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame * CFrame.new(0, -1, 0)
-				wait(0.1)
-			else
-				break
+		while Enabled == true and wait() do
+			for _,v in pairs(workspace.Orbs:GetChildren()) do
+				if Enabled == false then
+					break
+				end
+
+				if Enabled == true then
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame * CFrame.new(0, -1, 0)
+					wait(0.1)
+				else
+					break
+				end
 			end
 		end
 	end
 	
 	local Toggle = Tab:CreateToggle({
-		Name = "Toggle collect orbs",
+		Name = "Auto Collect Orbs",
 		CurrentValue = false,
 		Flag = "CollectOrbsToggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 		Callback = function(Value)
 			Enabled = Value
 			CollectOrbs()
+			
+			if Enabled then
+				Rayfield:Notify({
+					Title = "Notification",
+					Content = "Activated.",
+					Duration = 2.5
+				})
+			else
+				Rayfield:Notify({
+					Title = "Notification",
+					Content = "Deactivated.",
+					Duration = 2.5
+				})
+			end
 		end,
 	})
 	local Slider = Tab:CreateSlider({
@@ -45,9 +61,9 @@ function f.game8200787440(Window) -- eat blobs simulator
 	})
 end
 
-function f:RunFunction(placeid, Window)
+function f:RunFunction(placeid, Window, Rayfield)
 	if placeid then
-		f["game"..placeid](Window)
+		f["game"..placeid](Window, Rayfield)
 	end
 end
 
