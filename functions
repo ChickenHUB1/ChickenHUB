@@ -38,7 +38,7 @@ function f.game8200787440(Window) -- eat blobs simulator
 				local Character = v.Character
 				local HRP = Character:FindFirstChild("HumanoidRootPart")
 				
-				if KillAll == true then
+				if KillAll == false then
 					break
 				end
 
@@ -86,7 +86,7 @@ function f.game8200787440(Window) -- eat blobs simulator
 		Callback = function(Value)
 			KillAll = Value
 			
-			print(KillAll, Value)
+			--print(KillAll, Value)
 
 			KillAllFunc()
 		end,
@@ -105,6 +105,34 @@ function f.game8200787440(Window) -- eat blobs simulator
 	})
 end
 
+function f.Universal(Window)
+	local Tab = Window:CreateTab("Universal", nil)
+	
+	local WalkSpeedSlider = Tab:CreateSlider({
+		Name = "Walkspeed",
+		Range = {16, 500},
+		Increment = 1,
+		Suffix = "Walkspeed",
+		CurrentValue = 16,
+		Flag = "WalkspeedSlider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+		Callback = function(Value)
+			game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value   -- The variable (Value) is a number which correlates to the value the slider is currently at
+		end,
+	})
+	
+	local JumpPowerSlider = Tab:CreateSlider({
+		Name = "Jump power",
+		Range = {16, 500},
+		Increment = 1,
+		Suffix = "JumpPower",
+		CurrentValue = 16,
+		Flag = "JumpPowerSlider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+		Callback = function(Value)
+			game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value   -- The variable (Value) is a number which correlates to the value the slider is currently at
+		end,
+	})
+end
+
 function f:RunFunction(placeid, Window)
 	if placeid then
 		f["game"..placeid](Window)
@@ -114,6 +142,13 @@ function f:RunFunction(placeid, Window)
 			Content = "An internal error had occured. If this is reoccuring, contact script publishers.",
 			Duration = 7.5
 		})
+		Rayfield:Notify({
+			Title = "Notification",
+			Content = "Now loading universal.",
+			Duration = 57.5
+		})
+		
+		f.Universal(Window)
 	end
 end
 
