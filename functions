@@ -28,7 +28,7 @@ function f.game8200787440(Window) -- eat blobs simulator
 		end
 	end
 	
-	local function KillAll()
+	local function KillAllFunc()
 		if KillAll == false then
 			return
 		end
@@ -88,7 +88,7 @@ function f.game8200787440(Window) -- eat blobs simulator
 			
 			print(KillAll, Value)
 
-			KillAll()
+			KillAllFunc()
 		end,
 	})
 	
