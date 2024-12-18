@@ -133,6 +133,19 @@ function f.Universal(Window)
 	})
 end
 
+function f:LoadAdded(Window)
+	local ChangelogTab = Window:CreateTab("Changelog", nil)
+	
+	local Date_12_16_24 = ChangelogTab:CreateParagraph({
+		Title = "Testing - 12/16/24",
+		Content = "Everything in 'Eat Blobs Simulator' was starting to be made."
+	})
+	local Date12_18_24 = ChangelogTab:CreateParagraph({
+		Title = "Update - 12/18/24",
+		Content = "Added universal, finished 'Eat Blobs Simulator' scripts."
+	})
+end
+
 function f:RunFunction(placeid, Window)
 	if placeid then
 		f["game"..placeid](Window)
@@ -150,6 +163,8 @@ function f:RunFunction(placeid, Window)
 		
 		f.Universal(Window)
 	end
+	
+	f:LoadAdded(Window)
 end
 
 return f
