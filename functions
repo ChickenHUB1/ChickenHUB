@@ -37,6 +37,10 @@ function f.game8200787440(Window) -- eat blobs simulator
 			for _, v in pairs(game.Players:GetPlayers()) do
 				local Character = v.Character
 				local HRP = Character:FindFirstChild("HumanoidRootPart")
+				
+				if KillAll == true then
+					break
+				end
 
 				if Character and HRP then
 					local RealSizeValue = HRP:FindFirstChild("RealSize")
