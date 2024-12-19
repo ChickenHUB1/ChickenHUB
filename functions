@@ -116,7 +116,7 @@ function f.game18180213499(Window)
 			local character = player.Character
 			
 			if player and character then
-				character:FindFirstChild("Size").Value = 1e1
+				character:FindFirstChild("Size").Value = 999999999999999999999999999
 			end
 		end,
 	})
