@@ -178,26 +178,25 @@ function f:LoadExtra(Window)
 end
 
 function f:CheckVersion()
-	print("hello")
-	--if VersionCheckCooldown == false then
-		--VersionCheckCooldown = true
+	if VersionCheckCooldown == false then
+		VersionCheckCooldown = true
 		
-		--local OldVersion = Version
-		--local NewVersion = loadstring(game:HttpGet('https://raw.githubusercontent.com/ChickenHUB1/ChickenHUB/refs/heads/main/Version'))()
+		local OldVersion = Version
+		local NewVersion = loadstring(game:HttpGet('https://raw.githubusercontent.com/ChickenHUB1/ChickenHUB/refs/heads/main/Version'))()
 		
-		--if OldVersion ~= NewVersion then
-			--VersionCheckCooldown = true
-			--Rayfield:Notify({
-				--Title = "Version Notification",
-				--Content = "This is now an outdated version of ChickenHUB, please re-execute to get the newest version. You can still USE this version, there might be some bugs, or issues.",
-				--Duration = 10
-			--})
-		--elseif OldVersion == NewVersion then
-			--return
-		--end
+		if OldVersion ~= NewVersion then
+			VersionCheckCooldown = true
+			Rayfield:Notify({
+				Title = "Version Notification",
+				Content = "This is now an outdated version of ChickenHUB, please re-execute to get the newest version. You can still USE this version, there might be some bugs, or issues.",
+				Duration = 10
+			})
+		elseif OldVersion == NewVersion then
+			return
+		end
 		
-		--task.wait(30)
-	--end
+		task.wait(30)
+	end
 end
 
 function f:RunFunction(placeid, Window)
