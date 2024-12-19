@@ -105,6 +105,23 @@ function f.game8200787440(Window) -- eat blobs simulator
 	})
 end
 
+function f.game18180213499(Window)
+	local Tab = Window:CreateTab("Be a Hole", nil)
+	
+	local CollectEverything = Tab:CreateButton({
+		Name = "Collect everything",
+		
+		Callback = function()
+			local player = game.Players.LocalPlayer
+			local character = player.Character
+			
+			if player and character then
+				character:FindFirstChild("Size").Value = 1e1
+			end
+		end,
+	})
+end
+
 function f.Universal(Window)
 	local Tab = Window:CreateTab("Universal", nil)
 	
