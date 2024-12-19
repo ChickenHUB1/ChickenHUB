@@ -178,8 +178,8 @@ function f:LoadExtra(Window)
 end
 
 function f:CheckVersion()
-	if VersionCheckCooldown == false then
-		VersionCheckCooldown = true
+	--if VersionCheckCooldown == false then
+		--VersionCheckCooldown = true
 		
 		local OldVersion = Version
 		local NewVersion = loadstring(game:HttpGet('https://raw.githubusercontent.com/ChickenHUB1/ChickenHUB/refs/heads/main/Version'))()
@@ -195,8 +195,8 @@ function f:CheckVersion()
 			return
 		end
 		
-		task.wait(30)
-	end
+		--task.wait(30)
+	--end
 end
 
 function f:RunFunction(placeid, Window)
