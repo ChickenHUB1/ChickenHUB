@@ -162,6 +162,7 @@ end
 
 function f:LoadExtra(Window)
 	local ChangelogTab = Window:CreateTab("Changelog", nil)
+	local ExtraTab = Window:CreateTab("Extra", nil)
 	
 	local Date12_19_24 = ChangelogTab:CreateParagraph({
 		Title = "Update - 12/19/24",
@@ -174,6 +175,18 @@ function f:LoadExtra(Window)
 	local Date_12_16_24 = ChangelogTab:CreateParagraph({
 		Title = "Testing - 12/16/24",
 		Content = "Everything in 'Eat Blobs Simulator' was starting to be made."
+	})
+	
+	local LoadUniversalTabButton = ExtraTab:CreateButton({
+		Name = "Load universals.",
+		
+		Callback = function()
+			f.Universal(Window)
+		end,
+	})
+	local UniversalButtonParagraph = ExtraTab:CreateParagraph({
+		Title = "⚠WARNING⚠",
+		Content = "Using the universal scripts inside of a game could and can get you banned."
 	})
 end
 
