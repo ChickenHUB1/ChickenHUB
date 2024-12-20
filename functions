@@ -5,7 +5,7 @@ local VersionCheckCooldown = false
 
 local f = {}
 
-function f.game8200787440(Window) -- eat blobs simulator
+function f.game8200787440(Window, Rayfield) -- eat blobs simulator
 	local Tab = Window:CreateTab("Eat Blobs Simulator", nil) -- Title, Image
 	local Enabled = false
 	local KillAll = false
@@ -111,7 +111,7 @@ function f.game8200787440(Window) -- eat blobs simulator
 	})
 end
 
-function f.game18180213499(Window)
+function f.game18180213499(Window, Rayfield)
 	local Tab = Window:CreateTab("Be a Hole", nil)
 	
 	local CollectEverything = Tab:CreateButton({
@@ -132,7 +132,7 @@ end
 
 local UniversalAlreadyLoaded = false
 
-function f.Universal(Window)
+function f.Universal(Window, Rayfield)
 	local Tab = Window:CreateTab("Universal", nil)
 	
 	local WalkSpeedSlider = Tab:CreateSlider({
@@ -164,7 +164,7 @@ function f.Universal(Window)
 	UniversalAlreadyLoaded = true
 end
 
-function f:LoadExtra(Window)
+function f:LoadExtra(Window, Rayfield)
 	local ChangelogTab = Window:CreateTab("Changelog", nil)
 	local ExtraTab = Window:CreateTab("Extra", nil)
 	
@@ -202,7 +202,7 @@ function f:LoadExtra(Window)
 	})
 end
 
-function f:CheckVersion()
+function f:CheckVersion(Rayfield)
 	if VersionCheckCooldown == false then
 		VersionCheckCooldown = true
 		
@@ -229,7 +229,7 @@ end
 
 function f:RunFunction(placeid, Window, Rayfield)
 	if placeid then
-		f["game"..placeid](Window)
+		f["game"..placeid](Window, Rayfield)
 	else
 		Rayfield:Notify({
 			Title = "PlaceID - ERROR",
@@ -242,10 +242,10 @@ function f:RunFunction(placeid, Window, Rayfield)
 			Duration = 7.5
 		})
 		
-		f.Universal(Window)
+		f.Universal(Window, Rayfield)
 	end
 	
-	f:LoadExtra(Window)
+	f:LoadExtra(Window, Rayfield)
 end
 
 return f
