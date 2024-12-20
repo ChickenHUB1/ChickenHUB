@@ -1,4 +1,4 @@
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+--local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 local Version = loadstring(game:HttpGet('https://raw.githubusercontent.com/ChickenHUB1/ChickenHUB/refs/heads/main/Version'))()
 
 local VersionCheckCooldown = false
@@ -227,7 +227,7 @@ function f:CheckVersion()
 	end
 end
 
-function f:RunFunction(placeid, Window)
+function f:RunFunction(placeid, Window, Rayfield)
 	if placeid then
 		f["game"..placeid](Window)
 	else
