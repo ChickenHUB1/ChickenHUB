@@ -187,7 +187,7 @@ function f:CheckVersion()
 		print("Old version is "..OldVersion.." and new version is "..NewVersion)
 		print(OldVersion == NewVersion)
 		
-		if OldVersion ~= NewVersion then
+		if not(OldVersion == NewVersion) then
 			Rayfield:Notify({
 				Title = "Version Notification",
 				Content = "This is now an outdated version of ChickenHUB, please re-execute to get the newest version. You can still USE this version, there might be some bugs, or issues.",
