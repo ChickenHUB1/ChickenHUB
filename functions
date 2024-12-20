@@ -193,8 +193,6 @@ function f:CheckVersion()
 				Content = "This is now an outdated version of ChickenHUB, please re-execute to get the newest version. You can still USE this version, there might be some bugs, or issues.",
 				Duration = 10
 			})
-		elseif OldVersion == NewVersion then
-			return
 		end
 		
 		--task.wait(30)
