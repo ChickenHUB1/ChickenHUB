@@ -196,6 +196,8 @@ function f:CheckVersion()
 		end
 		
 		task.wait(30)
+		
+		VersionCheckCooldown = false
 	end
 end
 
