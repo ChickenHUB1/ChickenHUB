@@ -184,6 +184,8 @@ function f:CheckVersion()
 		local OldVersion = Version
 		local NewVersion = loadstring(game:HttpGet('https://raw.githubusercontent.com/ChickenHUB1/ChickenHUB/refs/heads/main/Version'))()
 		
+		print("Old version is "..OldVersion.." and new version is "..NewVersion)
+		
 		if OldVersion ~= NewVersion then
 			VersionCheckCooldown = true
 			Rayfield:Notify({
