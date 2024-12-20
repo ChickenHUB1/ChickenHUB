@@ -130,6 +130,8 @@ function f.game18180213499(Window)
 	})
 end
 
+local UniversalAlreadyLoaded = false
+
 function f.Universal(Window)
 	local Tab = Window:CreateTab("Universal", nil)
 	
@@ -158,6 +160,8 @@ function f.Universal(Window)
 			game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value   -- The variable (Value) is a number which correlates to the value the slider is currently at
 		end,
 	})
+	
+	UniversalAlreadyLoaded = true
 end
 
 function f:LoadExtra(Window)
@@ -181,7 +185,15 @@ function f:LoadExtra(Window)
 		Name = "Load universals.",
 		
 		Callback = function()
-			f.Universal(Window)
+			if UniversalAlreadyLoaded == false then
+				f.Universal(Window)
+			else
+				Rayfield:Notify({
+					Title = "Notification",
+					Content = "Already have a 'Universal' tab created.",
+					Duration = 2.5
+				})
+			end
 		end,
 	})
 	local UniversalButtonParagraph = ExtraTab:CreateParagraph({
