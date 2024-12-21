@@ -199,7 +199,7 @@ function f.game142823291(Window, Rayfield)
 						Character:FindFirstChildOfClass("Humanoid"):ChangeState("GettingUp")
 						
 						Thrust.AngularVelocity = Vector3.new(0,99999,0)
-						task.wait(0.05)
+						task.wait(0)
 						Thrust.AngularVelocity = Vector3.new(0,0,0)
 					end)
 					
