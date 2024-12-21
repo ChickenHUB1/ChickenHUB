@@ -188,6 +188,10 @@ function f.game142823291(Window, Rayfield)
 						Character:FindFirstChild("HumanoidRootPart").CFrame = MurdererChar:FindFirstChild("HumanoidRootPart").CFrame
 						Thrust.Location = MurdererChar:FindFirstChild("HumanoidRootPart").Position
 					end)
+					
+					if f then
+						break
+					end
 
 					if not (Murderer.Character:FindFirstChild("Head")) then
 						Thrust:Destroy()
