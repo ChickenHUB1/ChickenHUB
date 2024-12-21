@@ -171,7 +171,7 @@ function f.game142823291(Window, Rayfield)
 				})
 
 				LPChar:FindFirstChild("HumanoidRootPart").CFrame = Gun.CFrame
-				task.wait(0.25)
+				task.wait(0.175)
 				LPChar:FindFirstChild("HumanoidRootPart").CFrame = LPCharCFrame
 				
 				Rayfield:Notify({
