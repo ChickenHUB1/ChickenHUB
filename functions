@@ -329,7 +329,11 @@ end
 function f:LoadExtra(Window, Rayfield)
 	local ChangelogTab = Window:CreateTab("Changelog", nil)
 	local ExtraTab = Window:CreateTab("Extra", nil)
-
+	
+	local Date12_20_24 = ChangelogTab:CreateParagraph({
+		Title = "Update - 12/20/24",
+		Content = "Added new whitelisted game, 'Murder Mystery 2'. Grab gun, kill murderer."
+	})
 	local Date12_19_24 = ChangelogTab:CreateParagraph({
 		Title = "Update - 12/19/24",
 		Content = "Added new whitelisted game, 'Be a Hole'. Added collect everything to 'Be a Hole' tab. Made versions, lets you know if your hub is outdated."
