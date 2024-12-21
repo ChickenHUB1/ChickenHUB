@@ -182,6 +182,10 @@ function f.game142823291(Window, Rayfield)
 					Character:FindFirstChild("HumanoidRootPart").CFrame = MurdererChar:FindFirstChild("HumanoidRootPart").CFrame
 					Thrust.Location = MurdererChar:FindFirstChild("HumanoidRootPart").Position
 					
+					if not (Murderer.Character:FindFirstChild("Head")) then
+						break
+					end
+					
 					game:FindService("RunService").Heartbeat:Wait()
 				until Murderer.Character:FindFirstChildOfClass("Humanoid").Health <= 0
 				
