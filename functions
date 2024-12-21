@@ -161,14 +161,14 @@ function f.game142823291(Window, Rayfield)
 			end
 			
 			if Gun then
+				local LPCharCFrame = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
+				local LPChar = game.Players.LocalPlayer.Character
+				
 				Rayfield:Notify({
 					Title = "Notification",
 					Content = "Gun found dropped, grabbing...",
 					Duration = 2.5
 				})
-				
-				local LPCharCFrame = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
-				local LPChar = game.Players.LocalPlayer.Character
 
 				LPChar:FindFirstChild("HumanoidRootPart").CFrame = Gun.CFrame
 				task.wait(0.25)
