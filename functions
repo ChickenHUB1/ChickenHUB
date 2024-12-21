@@ -184,8 +184,10 @@ function f.game142823291(Window, Rayfield)
 						break
 					end
 
-					Character:FindFirstChild("HumanoidRootPart").CFrame = MurdererChar:FindFirstChild("HumanoidRootPart").CFrame
-					Thrust.Location = MurdererChar:FindFirstChild("HumanoidRootPart").Position
+					local s, f = pcall(function()
+						Character:FindFirstChild("HumanoidRootPart").CFrame = MurdererChar:FindFirstChild("HumanoidRootPart").CFrame
+						Thrust.Location = MurdererChar:FindFirstChild("HumanoidRootPart").Position
+					end)
 					
 					if not (Murderer.Character:FindFirstChild("Head")) then
 						Thrust:Destroy()
