@@ -166,15 +166,13 @@ function f.game142823291(Window, Rayfield)
 				end
 				
 				while Murderer.Character:FindFirstChildOfClass("Humanoid").Health <= 0 and task.wait() do
-					if Murderer then
-						if Character and Murderer.Character then
-							local MurdererChar = Murderer.Character
+					local MurdererChar = Murderer.Character
 
-							Character:FindFirstChild("HumanoidRootPart").CFrame = MurdererChar:FindFirstChild("HumanoidRootPart").CFrame
-							Thrust.Location = MurdererChar:FindFirstChild("HumanoidRootPart").Position
-						end
-					end
+					Character:FindFirstChild("HumanoidRootPart").CFrame = MurdererChar:FindFirstChild("HumanoidRootPart").CFrame
+					Thrust.Location = MurdererChar:FindFirstChild("HumanoidRootPart").Position
 				end
+				
+				KillMurdererCooldown = false
 			end
 		end,
 	})
