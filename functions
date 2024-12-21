@@ -9,12 +9,12 @@ function f.game8200787440(Window, Rayfield) -- eat blobs simulator
 	local Tab = Window:CreateTab("Eat Blobs Simulator", nil) -- Title, Image
 	local Enabled = false
 	local KillAll = false
-	
+
 	local function CollectOrbs()
 		if Enabled == false then
 			return
 		end
-		
+
 		while Enabled == true and wait() do
 			for _,v in pairs(workspace.Orbs:GetChildren()) do
 				if Enabled == false then
@@ -30,7 +30,7 @@ function f.game8200787440(Window, Rayfield) -- eat blobs simulator
 			end
 		end
 	end
-	
+
 	local function KillAllFunc()
 		if KillAll == false then
 			return
@@ -40,7 +40,7 @@ function f.game8200787440(Window, Rayfield) -- eat blobs simulator
 			for _, v in pairs(game.Players:GetPlayers()) do
 				local Character = v.Character
 				local HRP = Character:FindFirstChild("HumanoidRootPart")
-				
+
 				if KillAll == false then
 					break
 				end
@@ -57,16 +57,16 @@ function f.game8200787440(Window, Rayfield) -- eat blobs simulator
 			end
 		end
 	end
-	
+
 	local AutoCollectOrbsToggle = Tab:CreateToggle({
 		Name = "Auto Collect Orbs",
 		CurrentValue = false,
 		Flag = "CollectOrbsToggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 		Callback = function(Value)
 			Enabled = Value
-			
+
 			f:CheckVersion(Rayfield)
-			
+
 			if Enabled then
 				Rayfield:Notify({
 					Title = "Notification",
@@ -80,7 +80,7 @@ function f.game8200787440(Window, Rayfield) -- eat blobs simulator
 					Duration = 2.5
 				})
 			end
-			
+
 			CollectOrbs()
 		end,
 	})
@@ -90,13 +90,13 @@ function f.game8200787440(Window, Rayfield) -- eat blobs simulator
 		Flag = "KillAllToggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 		Callback = function(Value)
 			KillAll = Value
-			
+
 			--print(KillAll, Value)
 
 			KillAllFunc()
 		end,
 	})
-	
+
 	local Slider = Tab:CreateSlider({
 		Name = "Walkspeed",
 		Range = {16, 500},
@@ -113,16 +113,16 @@ end
 
 function f.game18180213499(Window, Rayfield)
 	local Tab = Window:CreateTab("Be a Hole", nil)
-	
+
 	local CollectEverything = Tab:CreateButton({
 		Name = "Collect everything",
-		
+
 		Callback = function()
 			f:CheckVersion(Rayfield)
-			
+
 			local player = game.Players.LocalPlayer
 			local character = player.Character
-			
+
 			if player and character then
 				character:FindFirstChild("Size").Value = 2^9999
 			end
@@ -133,13 +133,13 @@ end
 function f.game142823291(Window, Rayfield)
 	local Tab = Window:CreateTab("Murder Mystery 2", nil)
 	local MurderSection = Tab:CreateSection("Murderer")
-	
+
 	local KillMurdererCooldown = false
-	
+
 	local InnocentSection = Tab:CreateSection("Innocent")
 	local KillMurdererButton = Tab:CreateButton({
 		Name = "Kill murderer (not working)",
-		
+
 		Callback = function()
 			if KillMurdererCooldown == false then
 				KillMurdererCooldown = true
@@ -150,49 +150,58 @@ function f.game142823291(Window, Rayfield)
 		Name = "Grab gun",
 
 		Callback = function()
+			local Gun
+
+			for _,part in pairs(game:GetDescendants()) do
+				if part:IsA("BasePart") and part.Name == "GunDrop" then
+					Gun = part
+				end
+
+				wait()
+			end
+			
+			if Gun then
+				Rayfield:Notify({
+					Title = "Notification",
+					Content = "Gun found dropped, grabbing...",
+					Duration = 2.5
+				})
+			end
+			
 			for _,tplayer in pairs(game.Players:GetPlayers()) do
 				if tplayer and tplayer.Character then
 					local GunChar = tplayer.Character:FindFirstChild("Gun")
 					local GunBackpack = tplayer.Backpack:FindFirstChild("Gun")
-					local Gun
-					
-					for _,part in pairs(game:GetDescendants()) do
-						if part:IsA("BasePart") and part.Name == "GunDrop" then
-							Gun = part
-						end
 
-						wait()
-					end
-					
 					if GunChar or GunBackpack then
 						Rayfield:Notify({
 							Title = "Notification",
 							Content = "Gun is already in a players inventory.",
 							Duration = 2.5
 						})
-						
+
 						break
 					elseif Gun then
 						local LPCharCFrame = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
 						local LPChar = game.Players.LocalPlayer.Character
-						
+
 						Rayfield:Notify({
 							Title = "Notification",
 							Content = "Getting gun...",
 							Duration = 2.5
 						})
-						
+
 						LPChar:FindFirstChild("HumanoidRootPart").CFrame = Gun.CFrame
 						Rayfield:Notify({
 							Title = "Notification",
 							Content = "Grabbed gun.",
 							Duration = 2.5
 						})
-						
+
 						return
 					end
 				end
-				
+
 				wait()
 			end
 		end,
@@ -203,10 +212,10 @@ local UniversalAlreadyLoaded = false
 
 function f.Universal(Window, Rayfield)
 	local Tab = Window:CreateTab("Universal", nil)
-	
+
 	local EnabledWalk = false
 	local EnabledJump = false
-	
+
 	local WalkToggle = Tab:CreateToggle({
 		Name = "Walkspeed",
 		CurrentValue = false,
@@ -223,7 +232,7 @@ function f.Universal(Window, Rayfield)
 			EnabledJump = Value
 		end,
 	})
-	
+
 	local WalkSpeedSlider = Tab:CreateSlider({
 		Name = "Walkspeed",
 		Range = {16, 500},
@@ -233,7 +242,7 @@ function f.Universal(Window, Rayfield)
 		Flag = "WalkspeedSlider2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 		Callback = function(Value)
 			f:CheckVersion(Rayfield)
-			
+
 			if EnabledWalk then
 				game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
 			end
@@ -248,20 +257,20 @@ function f.Universal(Window, Rayfield)
 		Flag = "JumpPowerSlider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 		Callback = function(Value)
 			f:CheckVersion(Rayfield)
-			
+
 			if EnabledJump then
 				game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
 			end
 		end,
 	})
-	
+
 	UniversalAlreadyLoaded = true
 end
 
 function f:LoadExtra(Window, Rayfield)
 	local ChangelogTab = Window:CreateTab("Changelog", nil)
 	local ExtraTab = Window:CreateTab("Extra", nil)
-	
+
 	local Date12_19_24 = ChangelogTab:CreateParagraph({
 		Title = "Update - 12/19/24",
 		Content = "Added new whitelisted game, 'Be a Hole'. Added collect everything to 'Be a Hole' tab. Made versions, lets you know if your hub is outdated."
@@ -274,10 +283,10 @@ function f:LoadExtra(Window, Rayfield)
 		Title = "Testing - 12/16/24",
 		Content = "Everything in 'Eat Blobs Simulator' was starting to be made."
 	})
-	
+
 	local LoadUniversalTabButton = ExtraTab:CreateButton({
 		Name = "Load universals.",
-		
+
 		Callback = function()
 			if UniversalAlreadyLoaded == false then
 				f.Universal(Window)
@@ -299,12 +308,12 @@ end
 function f:CheckVersion(Rayfield)
 	if VersionCheckCooldown == false then
 		VersionCheckCooldown = true
-		
+
 		local OldVersion = Version
 		local NewVersion = loadstring(game:HttpGet('https://raw.githubusercontent.com/ChickenHUB1/ChickenHUB/refs/heads/main/Version'))()
-		
+
 		print("Old version is "..OldVersion.." and new version is "..NewVersion)
-		
+
 		if NewVersion ~= OldVersion then
 			Rayfield:Notify({
 				Title = "Version Notification",
@@ -312,9 +321,9 @@ function f:CheckVersion(Rayfield)
 				Duration = 10
 			})
 		end
-		
+
 		task.wait(30)
-		
+
 		VersionCheckCooldown = false
 	else
 		return
@@ -335,10 +344,10 @@ function f:RunFunction(placeid, Window, Rayfield)
 			Content = "Now loading universal.",
 			Duration = 7.5
 		})
-		
+
 		f.Universal(Window, Rayfield)
 	end
-	
+
 	f:LoadExtra(Window, Rayfield)
 end
 
