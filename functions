@@ -170,6 +170,8 @@ function f.game142823291(Window, Rayfield)
 				
 				if Murderer == nil then
 					KillMurdererCooldown = false
+					Thrust:Destroy()
+					Thrust2:Destroy()
 					return
 				end
 				
@@ -207,12 +209,14 @@ function f.game142823291(Window, Rayfield)
 
 					if not (Murderer.Character:FindFirstChild("Head")) then
 						Thrust:Destroy()
+						Thrust2:Destroy()
 						break
 					end
 
 					game:FindService("RunService").Heartbeat:Wait()
 				end
 				Thrust:Destroy()
+				Thrust2:Destroy()
 				
 				KillMurdererCooldown = false
 			end
