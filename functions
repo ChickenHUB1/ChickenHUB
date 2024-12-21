@@ -181,13 +181,18 @@ function f.game142823291(Window, Rayfield)
 									Content = "Grabbed gun.",
 									Duration = 2.5
 								})
-								task.wait(5)
+								
+								return
 							end
+							
+							wait()
 						end
 						
 						return
 					end
 				end
+				
+				wait()
 			end
 		end,
 	})
