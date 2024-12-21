@@ -132,12 +132,12 @@ end
 
 function f.game142823291(Window, Rayfield)
 	local Tab = Window:CreateTab("Murder Mystery 2", nil)
-	local InnocentSection = Tab:CreateSection("Innocent")
 	local MurderSection = Tab:CreateSection("Murderer")
 	
 	local KillMurdererCooldown = false
 	
-	local KillMurdererButton = InnocentSection:CreateButton({
+	local InnocentSection = Tab:CreateSection("Innocent")
+	local KillMurdererButton = Tab:CreateButton({
 		Name = "Kill murderer (not working)",
 		
 		Callback = function()
@@ -146,7 +146,7 @@ function f.game142823291(Window, Rayfield)
 			end
 		end,
 	})
-	local GrabGun = InnocentSection:CreateButton({
+	local GrabGun = Tab:CreateButton({
 		Name = "Grab gun",
 
 		Callback = function()
