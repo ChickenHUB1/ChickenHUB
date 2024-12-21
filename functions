@@ -183,6 +183,10 @@ function f.game142823291(Window, Rayfield)
 						Thrust:Destroy()
 						break
 					end
+					
+					if (Murderer:FindFirstChildOfClass("Humanoid").Health or Character:FindFirstChildOfClass("Humanoid").Health) <= 0 then
+						break
+					end
 
 					local s, f = pcall(function()
 						Character:FindFirstChild("HumanoidRootPart").CFrame = MurdererChar:FindFirstChild("HumanoidRootPart").CFrame
