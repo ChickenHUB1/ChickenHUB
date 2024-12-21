@@ -147,10 +147,10 @@ function f.game142823291(Window, Rayfield)
 				local Character = game.Players.LocalPlayer.Character
 				local Murderer: Player
 				
-				local Thrust = Instance.new("BodyThrust")
+				local Thrust = Instance.new("BodyVelocity")
 				Thrust.Parent = Character:FindFirstChild("HumanoidRootPart")
-				Thrust.Force = Vector3.new(5000,0,5000)
-				Thrust.Name = "FlingForce"
+				Thrust.Velocity = Vector3.new(9e8, 9e8, 9e8)
+				Thrust.MaxForce = Vector3.new(1/0, 1/0, 1/0)
 				
 				for _,tplayer in pairs(game.Players:GetPlayers()) do
 					if tplayer and tplayer.Character then
@@ -190,7 +190,6 @@ function f.game142823291(Window, Rayfield)
 
 					local s, f = pcall(function()
 						Character:FindFirstChild("HumanoidRootPart").CFrame = MurdererChar:FindFirstChild("HumanoidRootPart").CFrame
-						Thrust.Location = MurdererChar:FindFirstChild("HumanoidRootPart").Position
 					end)
 					
 					if f then
