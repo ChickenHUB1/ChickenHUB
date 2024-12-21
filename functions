@@ -130,6 +130,65 @@ function f.game18180213499(Window, Rayfield)
 	})
 end
 
+function f.game142823291(Window, Rayfield)
+	local Tab = Window:CreateTab("Murder Mystery 2", nil)
+	local InnocentSection = Tab:CreateSection("Innocent")
+	local MurderSection = Tab:CreateSection("Murderer")
+	
+	local KillMurdererCooldown = false
+	
+	local KillMurdererButton = InnocentSection:CreateButton({
+		Name = "Kill murderer (not working)",
+		
+		Callback = function()
+			if KillMurdererCooldown == false then
+				KillMurdererCooldown = true
+			end
+		end,
+	})
+	local GrabGun = InnocentSection:CreateButton({
+		Name = "Grab gun",
+
+		Callback = function()
+			for _,tplayer in pairs(game.Players:GetPlayers()) do
+				if tplayer and tplayer.Character then
+					local GunChar = tplayer.Character:FindFirstChild("Gun")
+					local GunBackpack = tplayer.Backpack:FindFirstChild("Gun")
+					
+					if GunChar or GunBackpack then
+						Rayfield:Notify({
+							Title = "Notification",
+							Content = "Gun is already in a players inventory.",
+							Duration = 2.5
+						})
+					else
+						local LPCharCFrame = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
+						local LPChar = game.Players.LocalPlayer.Character
+						
+						Rayfield:Notify({
+							Title = "Notification",
+							Content = "Getting gun...",
+							Duration = 2.5
+						})
+						
+						for _,part in pairs(game:GetDescendants()) do
+							if part:IsA("BasePart") and part.Name == "GunDrop" then
+								LPChar:FindFirstChild("HumanoidRootPart").CFrame = part.CFrame
+								Rayfield:Notify({
+									Title = "Notification",
+									Content = "Grabbed gun.",
+									Duration = 2.5
+								})
+								task.wait(5)
+							end
+						end
+					end
+				end
+			end
+		end,
+	})
+end
+
 local UniversalAlreadyLoaded = false
 
 function f.Universal(Window, Rayfield)
