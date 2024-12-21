@@ -181,7 +181,7 @@ function f.game142823291(Window, Rayfield)
 					Duration = 2.5
 				})
 				
-				while task.wait(0.1) do
+				while task.wait() do
 					local MurdererChar = Murderer.Character
 
 					--if not((MurdererChar or MurdererChar:FindFirstChild("HumanoidRootPart").CFrame) or (Character or Character:FindFirstChild("HumanoidRootPart").CFrame)) then
