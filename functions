@@ -179,10 +179,10 @@ function f.game142823291(Window, Rayfield)
 				while task.wait() do
 					local MurdererChar = Murderer.Character
 
-					if not((MurdererChar or MurdererChar:FindFirstChild("HumanoidRootPart").CFrame) or (Character or Character:FindFirstChild("HumanoidRootPart").CFrame)) then
-						Thrust:Destroy()
-						break
-					end
+					--if not((MurdererChar or MurdererChar:FindFirstChild("HumanoidRootPart").CFrame) or (Character or Character:FindFirstChild("HumanoidRootPart").CFrame)) then
+						--Thrust:Destroy()
+						--break
+					--end
 					
 					if (MurdererChar:FindFirstChildOfClass("Humanoid").Health or Character:FindFirstChildOfClass("Humanoid").Health) <= 0 then
 						break
