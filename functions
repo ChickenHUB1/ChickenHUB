@@ -177,6 +177,10 @@ function f.game142823291(Window, Rayfield)
 					Content = "Grabbed gun.",
 					Duration = 2.5
 				})
+				
+				task.wait(0.1)
+				
+				LPChar:FindFirstChild("HumanoidRootPart").CFrame = LPCharCFrame
 			end
 			
 			for _,tplayer in pairs(game.Players:GetPlayers()) do
