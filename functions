@@ -166,6 +166,17 @@ function f.game142823291(Window, Rayfield)
 					Content = "Gun found dropped, grabbing...",
 					Duration = 2.5
 				})
+				
+				local LPCharCFrame = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
+				local LPChar = game.Players.LocalPlayer.Character
+
+				LPChar:FindFirstChild("HumanoidRootPart").CFrame = Gun.CFrame
+				
+				Rayfield:Notify({
+					Title = "Notification",
+					Content = "Grabbed gun.",
+					Duration = 2.5
+				})
 			end
 			
 			for _,tplayer in pairs(game.Players:GetPlayers()) do
@@ -181,24 +192,6 @@ function f.game142823291(Window, Rayfield)
 						})
 
 						break
-					elseif Gun then
-						local LPCharCFrame = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
-						local LPChar = game.Players.LocalPlayer.Character
-
-						Rayfield:Notify({
-							Title = "Notification",
-							Content = "Getting gun...",
-							Duration = 2.5
-						})
-
-						LPChar:FindFirstChild("HumanoidRootPart").CFrame = Gun.CFrame
-						Rayfield:Notify({
-							Title = "Notification",
-							Content = "Grabbed gun.",
-							Duration = 2.5
-						})
-
-						return
 					end
 				end
 
