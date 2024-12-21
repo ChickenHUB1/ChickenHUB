@@ -364,7 +364,7 @@ function f:LoadExtra(Window, Rayfield)
 	})
 	local UniversalButtonParagraph = ExtraTab:CreateParagraph({
 		Title = "⚠WARNING⚠",
-		Content = "Using the universal scripts inside of a game could and can get you banned."
+		Content = "Using the universal scripts inside of a game could and can get you banned from some games with anti-cheat."
 	})
 end
 
