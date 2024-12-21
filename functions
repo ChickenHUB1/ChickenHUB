@@ -190,6 +190,7 @@ function f.game142823291(Window, Rayfield)
 
 					local s, f = pcall(function()
 						Character:FindFirstChild("HumanoidRootPart").CFrame = MurdererChar:FindFirstChild("HumanoidRootPart").CFrame
+						Character:FindFirstChildOfClass("Humanoid"):ChangeState("GettingUp")
 					end)
 					
 					if f then
