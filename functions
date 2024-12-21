@@ -176,9 +176,9 @@ function f.game142823291(Window, Rayfield)
 					Duration = 2.5
 				})
 				
-				repeat
+				while task.wait() do
 					local MurdererChar = Murderer.Character
-					
+
 					if not((MurdererChar or MurdererChar:FindFirstChild("HumanoidRootPart").CFrame) or (Character or Character:FindFirstChild("HumanoidRootPart").CFrame)) then
 						Thrust:Destroy()
 						break
@@ -188,14 +188,14 @@ function f.game142823291(Window, Rayfield)
 						Character:FindFirstChild("HumanoidRootPart").CFrame = MurdererChar:FindFirstChild("HumanoidRootPart").CFrame
 						Thrust.Location = MurdererChar:FindFirstChild("HumanoidRootPart").Position
 					end)
-					
+
 					if not (Murderer.Character:FindFirstChild("Head")) then
 						Thrust:Destroy()
 						break
 					end
-					
+
 					game:FindService("RunService").Heartbeat:Wait()
-				until Murderer.Character:FindFirstChildOfClass("Humanoid").Health <= 0
+				end
 				Thrust:Destroy()
 				
 				KillMurdererCooldown = false
