@@ -149,7 +149,7 @@ function f.game142823291(Window, Rayfield)
 				
 				local Thrust = Instance.new("BodyThrust")
 				Thrust.Parent = Character:FindFirstChild("HumanoidRootPart")
-				Thrust.Force = Vector3.new(500,0,500)
+				Thrust.Force = Vector3.new(5000,0,5000)
 				Thrust.Name = "FlingForce"
 				
 				for _,tplayer in pairs(game.Players:GetPlayers()) do
