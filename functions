@@ -181,7 +181,7 @@ function f.game142823291(Window, Rayfield)
 					Duration = 2.5
 				})
 				
-				while task.wait() do
+				while task.wait(0.1) do
 					local MurdererChar = Murderer.Character
 
 					--if not((MurdererChar or MurdererChar:FindFirstChild("HumanoidRootPart").CFrame) or (Character or Character:FindFirstChild("HumanoidRootPart").CFrame)) then
@@ -199,7 +199,7 @@ function f.game142823291(Window, Rayfield)
 						Character:FindFirstChildOfClass("Humanoid"):ChangeState("GettingUp")
 						
 						Thrust.AngularVelocity = Vector3.new(0,9999,0)
-						task.wait(0)
+						wait()
 						Thrust.AngularVelocity = Vector3.new(0,0,0)
 					end)
 					
