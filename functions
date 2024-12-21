@@ -178,6 +178,10 @@ function f.game142823291(Window, Rayfield)
 				
 				repeat
 					local MurdererChar = Murderer.Character
+					
+					if not((MurdererChar or MurdererChar:FindFirstChild("HumanoidRootPart").CFrame) or (Character or Character:FindFirstChild("HumanoidRootPart").CFrame)) then
+						break
+					end
 
 					Character:FindFirstChild("HumanoidRootPart").CFrame = MurdererChar:FindFirstChild("HumanoidRootPart").CFrame
 					Thrust.Location = MurdererChar:FindFirstChild("HumanoidRootPart").Position
