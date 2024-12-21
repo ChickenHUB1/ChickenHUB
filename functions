@@ -138,11 +138,43 @@ function f.game142823291(Window, Rayfield)
 
 	local InnocentSection = Tab:CreateSection("Innocent")
 	local KillMurdererButton = Tab:CreateButton({
-		Name = "Kill murderer (not working)",
+		Name = "Kill murderer",
 
 		Callback = function()
 			if KillMurdererCooldown == false then
 				KillMurdererCooldown = true
+				
+				local Character = game.Players.LocalPlayer.Character
+				local Murderer: Player
+				
+				local Thrust = Instance.new("BodyThrust")
+				Thrust.Parent = Character:FindFirstChild("HumanoidRootPart")
+				Thrust.Force = Vector3.new(9999,9999,9999)
+				Thrust.Name = "FlingForce"
+				
+				for _,tplayer in pairs(game.Players:GetPlayers()) do
+					if tplayer and tplayer.Character then
+						local KnifeChar = tplayer.Character:FindFirstChild("Knife")
+						local KnifeBackpack = tplayer.Backpack:FindFirstChild("Knife")
+						
+						if KnifeChar or KnifeBackpack then
+							Murderer = tplayer
+							
+							break
+						end
+					end
+				end
+				
+				while Murderer.Character:FindFirstChildOfClass("Humanoid").Health <= 0 and task.wait() do
+					if Murderer then
+						if Character and Murderer.Character then
+							local MurdererChar = Murderer.Character
+
+							Character:FindFirstChild("HumanoidRootPart").CFrame = MurdererChar:FindFirstChild("HumanoidRootPart").CFrame
+							Thrust.Location = MurdererChar:FindFirstChild("HumanoidRootPart").Position
+						end
+					end
+				end
 			end
 		end,
 	})
