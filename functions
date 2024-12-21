@@ -155,9 +155,9 @@ function f.game142823291(Window, Rayfield)
 			for _,part in pairs(game:GetDescendants()) do
 				if part:IsA("BasePart") and part.Name == "GunDrop" then
 					Gun = part
+					
+					break
 				end
-
-				wait()
 			end
 			
 			if Gun then
