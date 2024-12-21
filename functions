@@ -154,6 +154,15 @@ function f.game142823291(Window, Rayfield)
 				if tplayer and tplayer.Character then
 					local GunChar = tplayer.Character:FindFirstChild("Gun")
 					local GunBackpack = tplayer.Backpack:FindFirstChild("Gun")
+					local Gun
+					
+					for _,part in pairs(game:GetDescendants()) do
+						if part:IsA("BasePart") and part.Name == "GunDrop" then
+							Gun = part
+						end
+
+						wait()
+					end
 					
 					if GunChar or GunBackpack then
 						Rayfield:Notify({
@@ -163,7 +172,7 @@ function f.game142823291(Window, Rayfield)
 						})
 						
 						break
-					else
+					elseif Gun then
 						local LPCharCFrame = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
 						local LPChar = game.Players.LocalPlayer.Character
 						
@@ -173,20 +182,12 @@ function f.game142823291(Window, Rayfield)
 							Duration = 2.5
 						})
 						
-						for _,part in pairs(game:GetDescendants()) do
-							if part:IsA("BasePart") and part.Name == "GunDrop" then
-								LPChar:FindFirstChild("HumanoidRootPart").CFrame = part.CFrame
-								Rayfield:Notify({
-									Title = "Notification",
-									Content = "Grabbed gun.",
-									Duration = 2.5
-								})
-								
-								return
-							end
-							
-							wait()
-						end
+						LPChar:FindFirstChild("HumanoidRootPart").CFrame = Gun.CFrame
+						Rayfield:Notify({
+							Title = "Notification",
+							Content = "Grabbed gun.",
+							Duration = 2.5
+						})
 						
 						return
 					end
