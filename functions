@@ -161,6 +161,8 @@ function f.game142823291(Window, Rayfield)
 							Content = "Gun is already in a players inventory.",
 							Duration = 2.5
 						})
+						
+						break
 					else
 						local LPCharCFrame = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
 						local LPChar = game.Players.LocalPlayer.Character
@@ -182,6 +184,8 @@ function f.game142823291(Window, Rayfield)
 								task.wait(5)
 							end
 						end
+						
+						return
 					end
 				end
 			end
