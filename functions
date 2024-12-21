@@ -152,7 +152,7 @@ function f.game142823291(Window, Rayfield)
 		Callback = function()
 			local Gun
 
-			for _,part in pairs(game:GetDescendants()) do
+			for _,part in pairs(workspace:GetDescendants()) do
 				if part:IsA("BasePart") and part.Name == "GunDrop" then
 					Gun = part
 					
