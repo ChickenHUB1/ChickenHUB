@@ -165,6 +165,11 @@ function f.game142823291(Window, Rayfield)
 					end
 				end
 				
+				if Murderer == nil then
+					KillMurdererCooldown = false
+					return
+				end
+				
 				Rayfield:Notify({
 					Title = "Notification",
 					Content = "Now targeting "..Murderer.Name.."...",
