@@ -143,10 +143,10 @@ function f.game142823291(Window, Rayfield)
 		Callback = function()
 			if KillMurdererCooldown == false then
 				KillMurdererCooldown = true
-				
+
 				local Character = game.Players.LocalPlayer.Character
 				local Murderer: Player
-				
+
 				local Thrust = Instance.new("BodyAngularVelocity")
 				Thrust.Parent = Character:FindFirstChild("HumanoidRootPart")
 				Thrust.MaxTorque = Vector3.new(0,2^9999,0)
@@ -154,41 +154,41 @@ function f.game142823291(Window, Rayfield)
 				local Thrust2 = Instance.new("BodyThrust")
 				Thrust2.Parent = Character:FindFirstChild("HumanoidRootPart")
 				Thrust2.Force = Vector3.new(9999,0,9999)
-				
+
 				for _,tplayer in pairs(game.Players:GetPlayers()) do
 					if tplayer and tplayer.Character then
 						local KnifeChar = tplayer.Character:FindFirstChild("Knife")
 						local KnifeBackpack = tplayer.Backpack:FindFirstChild("Knife")
-						
+
 						if KnifeChar or KnifeBackpack then
 							Murderer = tplayer
-							
+
 							break
 						end
 					end
 				end
-				
+
 				if Murderer == nil then
 					KillMurdererCooldown = false
 					Thrust:Destroy()
 					Thrust2:Destroy()
 					return
 				end
-				
+
 				Rayfield:Notify({
 					Title = "Notification",
 					Content = "Now targeting "..Murderer.Name.."...",
 					Duration = 2.5
 				})
-				
+
 				while task.wait() do
 					local MurdererChar = Murderer.Character
 
 					--if not((MurdererChar or MurdererChar:FindFirstChild("HumanoidRootPart").CFrame) or (Character or Character:FindFirstChild("HumanoidRootPart").CFrame)) then
-						--Thrust:Destroy()
-						--break
+					--Thrust:Destroy()
+					--break
 					--end
-					
+
 					if (MurdererChar:FindFirstChildOfClass("Humanoid").Health or Character:FindFirstChildOfClass("Humanoid").Health) <= 0 then
 						break
 					end
@@ -196,13 +196,13 @@ function f.game142823291(Window, Rayfield)
 					local s, f = pcall(function()
 						Character:FindFirstChild("HumanoidRootPart").CFrame = MurdererChar:FindFirstChild("HumanoidRootPart").CFrame
 						Thrust2.Location = MurdererChar:FindFirstChild("HumanoidRootPart").Position
-						Character:FindFirstChildOfClass("Humanoid"):ChangeState("GettingUp")
-						
+						--Character:FindFirstChildOfClass("Humanoid"):ChangeState("GettingUp")
+
 						Thrust.AngularVelocity = Vector3.new(0,9999,0)
 						task.wait()
 						Thrust.AngularVelocity = Vector3.new(0,0,0)
 					end)
-					
+
 					if f then
 						break
 					end
@@ -217,7 +217,7 @@ function f.game142823291(Window, Rayfield)
 				end
 				Thrust:Destroy()
 				Thrust2:Destroy()
-				
+
 				KillMurdererCooldown = false
 			end
 		end,
@@ -231,15 +231,15 @@ function f.game142823291(Window, Rayfield)
 			for _,part in pairs(workspace:GetDescendants()) do
 				if part:IsA("BasePart") and part.Name == "GunDrop" then
 					Gun = part
-					
+
 					break
 				end
 			end
-			
+
 			if Gun then
 				local LPCharCFrame = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
 				local LPChar = game.Players.LocalPlayer.Character
-				
+
 				Rayfield:Notify({
 					Title = "Notification",
 					Content = "Gun found dropped, grabbing...",
@@ -249,14 +249,14 @@ function f.game142823291(Window, Rayfield)
 				LPChar:FindFirstChild("HumanoidRootPart").CFrame = Gun.CFrame
 				task.wait(0.175)
 				LPChar:FindFirstChild("HumanoidRootPart").CFrame = LPCharCFrame
-				
+
 				Rayfield:Notify({
 					Title = "Notification",
 					Content = "Grabbed gun.",
 					Duration = 2.5
 				})
 			end
-			
+
 			for _,tplayer in pairs(game.Players:GetPlayers()) do
 				if tplayer and tplayer.Character then
 					local GunChar = tplayer.Character:FindFirstChild("Gun")
@@ -341,7 +341,7 @@ end
 function f:LoadExtra(Window, Rayfield)
 	local ChangelogTab = Window:CreateTab("Changelog", nil)
 	local ExtraTab = Window:CreateTab("Extra", nil)
-	
+
 	local Date12_20_24 = ChangelogTab:CreateParagraph({
 		Title = "Update - 12/20/24",
 		Content = "Added new whitelisted game, 'Murder Mystery 2'. Grab gun, kill murderer."
