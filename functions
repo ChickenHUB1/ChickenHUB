@@ -195,7 +195,7 @@ function f.game142823291(Window, Rayfield)
 
 						if target.Backpack:FindFirstChild("Knife") or Char:FindFirstChild("Knife") then
 							ESPHighlight2.FillColor = Color3.fromRGB(255, 0, 0)
-						elseif target.Backpack:FindFirstChild("Gun") or target:FindFirstChild("Gun") then
+						elseif target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
 							ESPHighlight2.FillColor = Color3.fromRGB(0, 0, 255)
 						else
 							ESPHighlight2.FillColor = Color3.fromRGB(0, 255, 0)
@@ -245,7 +245,27 @@ function f.game142823291(Window, Rayfield)
 			GunESP = Value
 			
 			if GunESP then
-				--
+				f:CheckVersion(Rayfield)
+
+				while GunESP == true and task.wait() do
+					local Gun
+
+					for _,part in pairs(workspace:GetDescendants()) do
+						if part:IsA("BasePart") and part.Name == "GunDrop" then
+							Gun = part
+
+							break
+						end
+					end
+
+					if Gun then
+						local Highlight = Instance.new("Highlight")
+						Highlight.FillColor = Color3.fromRGB(0, 0, 200)
+						Highlight.OutlineColor = Color3.fromRGB(255, 255, 255)
+						Highlight.OutlineTransparency = 0
+						Highlight.Parent = Gun
+					end
+				end
 			end
 		end,
 	})
