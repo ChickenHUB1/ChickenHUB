@@ -137,6 +137,8 @@ function f.game142823291(Window, Rayfield)
 	local KillMurdererCooldown = false
 	local ESPActivated = false
 	
+	local DeathConnections = {}
+	
 	local function CreateHighlights()
 		for _,target in pairs(game.Players:GetPlayers()) do
 			local Char = target and target.Character
@@ -144,7 +146,31 @@ function f.game142823291(Window, Rayfield)
 			if Char and not(Char:FindFirstChild("ESPHighlight")) then
 				local ESPHighlight = Instance.new("Highlight")
 				ESPHighlight.Name = "ESPHighlight"
+				ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
 				ESPHighlight.Parent = Char
+
+				if target.Backpack:FindFirstChild("Knife") or Char:FindFirstChild("Knife") then
+					ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
+				elseif target.Backpack:FindFirstChild("Gun") or target:FindFirstChild("Gun") then
+					ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
+				else
+					ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
+				end
+				
+				target.CharacterAdded:Connect(function()
+					local ESPHighlight = Instance.new("Highlight")
+					ESPHighlight.Name = "ESPHighlight"
+					ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
+					ESPHighlight.Parent = Char
+
+					if target.Backpack:FindFirstChild("Knife") or Char:FindFirstChild("Knife") then
+						ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
+					elseif target.Backpack:FindFirstChild("Gun") or target:FindFirstChild("Gun") then
+						ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
+					else
+						ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
+					end
+				end)
 			end
 		end
 		
@@ -160,6 +186,7 @@ function f.game142823291(Window, Rayfield)
 			end
 		end
 		
+		DeathConnections = {}
 		return "Done!"
 	end
 
