@@ -343,7 +343,7 @@ function f.game142823291(Window, Rayfield)
 					--break
 					--end
 
-					if (MurdererChar:FindFirstChildOfClass("Humanoid").Health or Character:FindFirstChildOfClass("Humanoid").Health) <= 0 then
+					if MurdererChar and Character and (MurdererChar:FindFirstChildOfClass("Humanoid").Health or Character:FindFirstChildOfClass("Humanoid").Health) <= 0 then
 						break
 					end
 
