@@ -225,6 +225,16 @@ function f.game142823291(Window, Rayfield)
 					Thrust2:Destroy()
 					return
 				end
+				
+				if Murderer == game.Players.LocalPlayer then
+					Rayfield:Notify({
+						Title = "Notification",
+						Content = "Can't target yourself.",
+						Duration = 2.5
+					})
+					
+					return
+				end
 
 				Rayfield:Notify({
 					Title = "Notification",
