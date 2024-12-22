@@ -148,10 +148,6 @@ function f.game142823291(Window, Rayfield)
 
 				local Character = game.Players.LocalPlayer.Character
 				local Murderer: Player
-				
-				Character:FindFirstChildOfClass("Humanoid").Health = -100
-				
-				wait(2.5)
 
 				local Thrust = Instance.new("BodyAngularVelocity")
 				Thrust.Parent = Character:FindFirstChild("HumanoidRootPart")
