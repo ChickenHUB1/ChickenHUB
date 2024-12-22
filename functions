@@ -171,17 +171,17 @@ function f.game142823291(Window, Rayfield)
 						ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
 					end
 
-					DeathConnections[#DeathConnections+1] = target.CharacterAdded:Connect(function()
-						if Char:FindFirstChild("ESPHighlight") then
-							Char:FindFirstChild("ESPHighlight"):Destroy()
+					DeathConnections[#DeathConnections+1] = target.CharacterAdded:Connect(function(char2)
+						if char2:FindFirstChild("ESPHighlight") then
+							char2:FindFirstChild("ESPHighlight"):Destroy()
 						end
 						
 						local ESPHighlight = Instance.new("Highlight")
 						ESPHighlight.Name = "ESPHighlight"
 						ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
-						ESPHighlight.Parent = Char
+						ESPHighlight.Parent = char2
 
-						if target.Backpack:FindFirstChild("Knife") or Char:FindFirstChild("Knife") then
+						if target.Backpack:FindFirstChild("Knife") or char2:FindFirstChild("Knife") then
 							ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
 						elseif target.Backpack:FindFirstChild("Gun") or target:FindFirstChild("Gun") then
 							ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
