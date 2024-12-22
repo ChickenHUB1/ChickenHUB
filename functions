@@ -209,21 +209,13 @@ function f.game142823291(Window, Rayfield)
 			ESPActivated = Value
 			
 			if ESPActivated then
-				Rayfield:Notify({
-					Title = "Notification",
-					Content = CreateHighlights(),
-					Duration = 2.5
-				})
+				CreateHighlights()
 			else
-				Rayfield:Notify({
-					Title = "Notification",
-					Content = RemoveHighlights(),
-					Duration = 2.5
-				})
+				RemoveHighlights()
 			end
 		end,
 	})
-	local ESPAll = Tab:CreateToggle({
+	local GunESP = Tab:CreateToggle({
 		Name = "Gun ESP",
 		CurrentValue = false,
 		Flag = "MM2ESP2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
