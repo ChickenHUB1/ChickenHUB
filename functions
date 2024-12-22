@@ -136,6 +136,7 @@ function f.game142823291(Window, Rayfield)
 
 	local KillMurdererCooldown = false
 	local ESPActivated = false
+	local GunESP = false
 	
 	local DeathConnections = {}
 	
@@ -157,7 +158,7 @@ function f.game142823291(Window, Rayfield)
 					ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
 				end
 				
-				target.CharacterAdded:Connect(function()
+				DeathConnections[#DeathConnections+1] = target.CharacterAdded:Connect(function()
 					local ESPHighlight = Instance.new("Highlight")
 					ESPHighlight.Name = "ESPHighlight"
 					ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
@@ -210,6 +211,18 @@ function f.game142823291(Window, Rayfield)
 					Content = RemoveHighlights(),
 					Duration = 2.5
 				})
+			end
+		end,
+	})
+	local ESPAll = Tab:CreateToggle({
+		Name = "Gun ESP",
+		CurrentValue = false,
+		Flag = "MM2ESP2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+		Callback = function(Value)
+			GunESP = Value
+			
+			if GunESP then
+				--
 			end
 		end,
 	})
