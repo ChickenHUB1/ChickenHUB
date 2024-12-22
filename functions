@@ -149,6 +149,10 @@ function f.game142823291(Window, Rayfield)
 				ESPHighlight.Name = "ESPHighlight"
 				ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
 				ESPHighlight.Parent = Char
+				
+				if target == game.Players.LocalPlayer then
+					ESPHighlight:Destroy()
+				end
 
 				if target.Backpack:FindFirstChild("Knife") or Char:FindFirstChild("Knife") then
 					ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
