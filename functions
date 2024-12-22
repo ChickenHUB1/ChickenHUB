@@ -141,7 +141,11 @@ function f.game142823291(Window, Rayfield)
 	local DeathConnections = {}
 	
 	local function CreateHighlights()
-		while ESPActivated == true and task.wait(0.1) do
+		while ESPActivated and task.wait(0.1) do
+			if not ESPActivated then
+				break
+			end
+			
 			for _,target in pairs(game.Players:GetPlayers()) do
 				local Char = target and target.Character
 
