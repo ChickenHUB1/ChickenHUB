@@ -148,16 +148,20 @@ function f.game142823291(Window, Rayfield)
 			
 			for _,target in pairs(game.Players:GetPlayers()) do
 				local Char = target and target.Character
-				
-				if Char and Char:FindFirstChild("ESPHighlight") then
-					Char:FindFirstChild("ESPHighlight"):Destroy()
-				end
 
-				if Char and not(Char:FindFirstChild("ESPHighlight")) then
-					local ESPHighlight = Instance.new("Highlight")
-					ESPHighlight.Name = "ESPHighlight"
-					ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
-					ESPHighlight.Parent = Char
+				if Char then
+					local ESPHighlight
+					
+					if Char and not(Char:FindFirstChild("ESPHighlight")) then
+						ESPHighlight = Instance.new("Highlight")
+						ESPHighlight.Name = "ESPHighlight"
+						ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
+						ESPHighlight.Parent = Char
+					end
+					
+					if ESPHighlight == nil then
+						ESPHighlight = Char:FindFirstChild("ESPHighlight")
+					end
 
 					if target == game.Players.LocalPlayer then
 						ESPHighlight:Destroy()
@@ -172,21 +176,29 @@ function f.game142823291(Window, Rayfield)
 					end
 
 					DeathConnections[#DeathConnections+1] = target.CharacterAdded:Connect(function(char2)
-						if Char and char2 and char2:FindFirstChild("ESPHighlight") then
-							char2:FindFirstChild("ESPHighlight"):Destroy()
-						end
-						
-						local ESPHighlight = Instance.new("Highlight")
-						ESPHighlight.Name = "ESPHighlight"
-						ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
-						ESPHighlight.Parent = char2
+						local ESPHighlight2
 
-						if target.Backpack:FindFirstChild("Knife") or char2:FindFirstChild("Knife") then
-							ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
+						if Char and not(Char:FindFirstChild("ESPHighlight")) then
+							ESPHighlight2 = Instance.new("Highlight")
+							ESPHighlight2.Name = "ESPHighlight"
+							ESPHighlight2.OutlineColor = Color3.fromRGB(255, 255, 255)
+							ESPHighlight2.Parent = Char
+						end
+
+						if ESPHighlight2 == nil then
+							ESPHighlight2 = Char:FindFirstChild("ESPHighlight")
+						end
+
+						if target == game.Players.LocalPlayer then
+							ESPHighlight2:Destroy()
+						end
+
+						if target.Backpack:FindFirstChild("Knife") or Char:FindFirstChild("Knife") then
+							ESPHighlight2.FillColor = Color3.fromRGB(255, 0, 0)
 						elseif target.Backpack:FindFirstChild("Gun") or target:FindFirstChild("Gun") then
-							ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
+							ESPHighlight2.FillColor = Color3.fromRGB(0, 0, 255)
 						else
-							ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
+							ESPHighlight2.FillColor = Color3.fromRGB(0, 255, 0)
 						end
 					end)
 				end
