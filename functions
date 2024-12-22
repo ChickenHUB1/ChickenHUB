@@ -261,13 +261,6 @@ function f.game142823291(Window, Rayfield)
 						end
 					end
 				end
-
-				if Murderer == nil then
-					KillMurdererCooldown = false
-					Thrust:Destroy()
-					Thrust2:Destroy()
-					return
-				end
 				
 				if Murderer == game.Players.LocalPlayer then
 					Rayfield:Notify({
@@ -276,6 +269,16 @@ function f.game142823291(Window, Rayfield)
 						Duration = 2.5
 					})
 					
+					Thrust:Destroy()
+					Thrust2:Destroy()
+
+					return
+				end
+
+				if Murderer == nil then
+					KillMurdererCooldown = false
+					Thrust:Destroy()
+					Thrust2:Destroy()
 					return
 				end
 
