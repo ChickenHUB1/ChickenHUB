@@ -141,6 +141,8 @@ function f.game142823291(Window, Rayfield)
 		Name = "Kill murderer",
 
 		Callback = function()
+			f:CheckVersion(Rayfield)
+			
 			if KillMurdererCooldown == false then
 				KillMurdererCooldown = true
 
@@ -232,6 +234,8 @@ function f.game142823291(Window, Rayfield)
 		Name = "Grab gun",
 
 		Callback = function()
+			f:CheckVersion(Rayfield)
+			
 			local Gun
 
 			for _,part in pairs(workspace:GetDescendants()) do
@@ -298,6 +302,7 @@ function f.Universal(Window, Rayfield)
 		CurrentValue = false,
 		Flag = "WalkspeedToggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 		Callback = function(Value)
+			f:CheckVersion(Rayfield)
 			EnabledWalk = Value
 		end,
 	})
@@ -306,6 +311,7 @@ function f.Universal(Window, Rayfield)
 		CurrentValue = false,
 		Flag = "JumppowerToggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 		Callback = function(Value)
+			f:CheckVersion(Rayfield)
 			EnabledJump = Value
 		end,
 	})
@@ -373,6 +379,8 @@ function f:LoadExtra(Window, Rayfield)
 		Name = "Load universals.",
 
 		Callback = function()
+			f:CheckVersion(Rayfield)
+			
 			if UniversalAlreadyLoaded == false then
 				f.Universal(Window)
 			else
