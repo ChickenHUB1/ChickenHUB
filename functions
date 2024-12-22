@@ -207,6 +207,8 @@ function f.game142823291(Window, Rayfield)
 		CurrentValue = false,
 		Flag = "MM2ESP1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 		Callback = function(Value)
+			f:CheckVersion(Rayfield)
+			
 			ESPActivated = Value
 			
 			if ESPActivated then
@@ -229,6 +231,8 @@ function f.game142823291(Window, Rayfield)
 		CurrentValue = false,
 		Flag = "MM2ESP2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 		Callback = function(Value)
+			f:CheckVersion(Rayfield)
+			
 			GunESP = Value
 			
 			if GunESP then
