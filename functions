@@ -146,6 +146,10 @@ function f.game142823291(Window, Rayfield)
 
 				local Character = game.Players.LocalPlayer.Character
 				local Murderer: Player
+				
+				Character:FindFirstChildOfClass("Humanoid").Health = -100
+				
+				wait(2.5)
 
 				local Thrust = Instance.new("BodyAngularVelocity")
 				Thrust.Parent = Character:FindFirstChild("HumanoidRootPart")
@@ -180,6 +184,8 @@ function f.game142823291(Window, Rayfield)
 					Content = "Now targeting "..Murderer.Name.."...",
 					Duration = 2.5
 				})
+				
+				workspace.CurrentCamera.CameraSubject = Murderer.Character:FindFirstChildOfClass("Humanoid")
 
 				while task.wait() do
 					local MurdererChar = Murderer.Character
@@ -341,7 +347,11 @@ end
 function f:LoadExtra(Window, Rayfield)
 	local ChangelogTab = Window:CreateTab("Changelog", nil)
 	local ExtraTab = Window:CreateTab("Extra", nil)
-
+	
+	local Date12_21_24 = ChangelogTab:CreateParagraph({
+		Title = "Update - 12/21/24",
+		Content = "'Murder Mystery 2' kill murderer has been updated high chance of actually killing the murderer (flings)"
+	})
 	local Date12_20_24 = ChangelogTab:CreateParagraph({
 		Title = "Update - 12/20/24",
 		Content = "Added new whitelisted game, 'Murder Mystery 2'. Grab gun, kill murderer."
