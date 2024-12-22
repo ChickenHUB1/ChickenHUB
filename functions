@@ -155,7 +155,7 @@ function f.game142823291(Window, Rayfield)
 					ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
 					ESPHighlight.Parent = Char
 
-					if target == game.Players.LocalPlayer or target.Character:FindFirstChildOfClass("Humanoid").Health <= 0 then
+					if target == game.Players.LocalPlayer then
 						ESPHighlight:Destroy()
 					end
 
@@ -181,6 +181,8 @@ function f.game142823291(Window, Rayfield)
 							ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
 						end
 					end)
+				else
+					Char:FindFirstChild("ESPHighlight"):Destroy()
 				end
 			end
 		end
