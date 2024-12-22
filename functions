@@ -153,7 +153,7 @@ function f.game142823291(Window, Rayfield)
 					local ESPHighlight
 					local NameTag, NameLabel
 					
-					if Char and not(Char:FindFirstChild("ESPHighlight") or (Char:FindFirstChild("Head") or Char:FindFirstChild("Head"):FindFirstChild("NameTag"))) then
+					if Char and not(Char:FindFirstChild("ESPHighlight")) then
 						ESPHighlight = Instance.new("Highlight")
 						ESPHighlight.Name = "ESPHighlight"
 						ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
