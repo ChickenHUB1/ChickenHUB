@@ -190,6 +190,7 @@ function f.game142823291(Window, Rayfield)
 
 					if target == game.Players.LocalPlayer then
 						ESPHighlight:Destroy()
+						NameTag:Destroy()
 					end
 
 					if target.Backpack:FindFirstChild("Knife") or Char:FindFirstChild("Knife") then
