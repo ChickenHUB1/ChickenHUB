@@ -151,12 +151,33 @@ function f.game142823291(Window, Rayfield)
 
 				if Char then
 					local ESPHighlight
+					local NameTag, NameLabel
 					
 					if Char and not(Char:FindFirstChild("ESPHighlight")) then
 						ESPHighlight = Instance.new("Highlight")
 						ESPHighlight.Name = "ESPHighlight"
 						ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
 						ESPHighlight.Parent = Char
+					end
+					if not(Char:FindFirstChild("Head"):FindFirstChild("NameTag")) then
+						NameTag = Instance.new("BillboardGui")
+						NameTag.Size = UDim2.fromScale(10, 2.5)
+						NameTag.AlwaysOnTop = true
+						NameTag.Name = "NameTag"
+						NameTag.StudsOffsetWorldSpace = Vector3.new(0, 3, 0)
+						NameTag.Parent = Char:FindFirstChild("Head")
+						
+						NameLabel = Instance.new("TextLabel")
+						NameLabel.Size = UDim2.fromScale(1, 1)
+						NameLabel.Text = target.Name
+						NameLabel.Name = "NameLabel"
+						NameLabel.Parent = NameTag
+					end
+					
+					if NameTag == nil then
+						NameTag = Char:FindFirstChild("Head"):FindFirstChild("NameTag")
+					elseif NameLabel == nil then
+						NameLabel = NameTag:FindFirstChild("NameLabel")
 					end
 					
 					if ESPHighlight == nil then
@@ -176,34 +197,50 @@ function f.game142823291(Window, Rayfield)
 					end
 
 					DeathConnections[#DeathConnections+1] = target.CharacterAdded:Connect(function(char2)
-						local ESPHighlight2
-						
-						if ESPActivated == false then
-							DeathConnections = {}
-							return
-						end
+						local ESPHighlight
+						local NameTag, NameLabel
 
 						if Char and not(Char:FindFirstChild("ESPHighlight")) then
-							ESPHighlight2 = Instance.new("Highlight")
-							ESPHighlight2.Name = "ESPHighlight"
-							ESPHighlight2.OutlineColor = Color3.fromRGB(255, 255, 255)
-							ESPHighlight2.Parent = Char
+							ESPHighlight = Instance.new("Highlight")
+							ESPHighlight.Name = "ESPHighlight"
+							ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
+							ESPHighlight.Parent = Char
+						end
+						if not(Char:FindFirstChild("Head"):FindFirstChild("NameTag")) then
+							NameTag = Instance.new("BillboardGui")
+							NameTag.Size = UDim2.fromScale(10, 2.5)
+							NameTag.AlwaysOnTop = true
+							NameTag.Name = "NameTag"
+							NameTag.StudsOffsetWorldSpace = Vector3.new(0, 3, 0)
+							NameTag.Parent = Char:FindFirstChild("Head")
+
+							NameLabel = Instance.new("TextLabel")
+							NameLabel.Size = UDim2.fromScale(1, 1)
+							NameLabel.Text = target.Name
+							NameLabel.Name = "NameLabel"
+							NameLabel.Parent = NameTag
 						end
 
-						if ESPHighlight2 == nil then
-							ESPHighlight2 = Char:FindFirstChild("ESPHighlight")
+						if NameTag == nil then
+							NameTag = Char:FindFirstChild("Head"):FindFirstChild("NameTag")
+						elseif NameLabel == nil then
+							NameLabel = NameTag:FindFirstChild("NameLabel")
+						end
+
+						if ESPHighlight == nil then
+							ESPHighlight = Char:FindFirstChild("ESPHighlight")
 						end
 
 						if target == game.Players.LocalPlayer then
-							ESPHighlight2:Destroy()
+							ESPHighlight:Destroy()
 						end
 
 						if target.Backpack:FindFirstChild("Knife") or Char:FindFirstChild("Knife") then
-							ESPHighlight2.FillColor = Color3.fromRGB(255, 0, 0)
+							ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
 						elseif target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
-							ESPHighlight2.FillColor = Color3.fromRGB(0, 0, 255)
+							ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
 						else
-							ESPHighlight2.FillColor = Color3.fromRGB(0, 255, 0)
+							ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
 						end
 					end)
 				end
@@ -216,8 +253,11 @@ function f.game142823291(Window, Rayfield)
 		for _,target in pairs(game.Players:GetPlayers()) do
 			local Char = target and target.Character
 
-			if Char and Char:FindFirstChild("ESPHighlight") then
+			if Char and Char:FindFirstChild("ESPHighlight") and Char:FindFirstChild("Head"):FindFirstChild("NameTag") then
 				local Highlight = Char:FindFirstChild("ESPHighlight")
+				local NameTag = Char:FindFirstChild("Head"):FindFirstChild("NameTag")
+				
+				NameTag:Destroy()
 				Highlight:Destroy()
 			end
 		end
