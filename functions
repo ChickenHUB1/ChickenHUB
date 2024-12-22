@@ -196,7 +196,7 @@ function f.game142823291(Window, Rayfield)
 					local s, f = pcall(function()
 						Character:FindFirstChild("HumanoidRootPart").CFrame = MurdererChar:FindFirstChild("HumanoidRootPart").CFrame
 						Thrust2.Location = MurdererChar:FindFirstChild("HumanoidRootPart").Position
-						--Character:FindFirstChildOfClass("Humanoid"):ChangeState("GettingUp")
+						Character:FindFirstChildOfClass("Humanoid"):SetStateEnabled(Enum.HumanoidStateType.Seated, true)
 
 						Thrust.AngularVelocity = Vector3.new(0,9999,0)
 						task.wait()
