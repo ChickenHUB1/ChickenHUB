@@ -141,8 +141,8 @@ function f.game142823291(Window, Rayfield)
 	local DeathConnections = {}
 	
 	local function CreateHighlights()
-		while ESPActivated and task.wait() do
-			if not ESPActivated then
+		while ESPActivated == true and task.wait() do
+			if ESPActivated == false then
 				break
 			end
 			
@@ -177,6 +177,11 @@ function f.game142823291(Window, Rayfield)
 
 					DeathConnections[#DeathConnections+1] = target.CharacterAdded:Connect(function(char2)
 						local ESPHighlight2
+						
+						if ESPActivated == false then
+							DeathConnections = {}
+							return
+						end
 
 						if Char and not(Char:FindFirstChild("ESPHighlight")) then
 							ESPHighlight2 = Instance.new("Highlight")
