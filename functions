@@ -164,19 +164,20 @@ function f.game142823291(Window, Rayfield)
 	end
 
 	local InnocentSection = Tab:CreateSection("Innocent")
-	local ESPAll = Tab:CreateButton({
+	local ESPAll = Tab:CreateToggle({
 		Name = "ESP",
-		
-		Callback = function()
-			if ESPActivated == false then
-				ESPActivated = true
+		CurrentValue = false,
+		Flag = "MM2ESP1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+		Callback = function(Value)
+			ESPActivated = Value
+			
+			if ESPActivated then
 				Rayfield:Notify({
 					Title = "Notification",
 					Content = CreateHighlights(),
 					Duration = 2.5
 				})
 			else
-				ESPActivated = false
 				Rayfield:Notify({
 					Title = "Notification",
 					Content = RemoveHighlights(),
