@@ -148,6 +148,10 @@ function f.game142823291(Window, Rayfield)
 			
 			for _,target in pairs(game.Players:GetPlayers()) do
 				local Char = target and target.Character
+				
+				if Char:FindFirstChild("ESPHighlight") then
+					Char:FindFirstChild("ESPHighlight"):Destroy()
+				end
 
 				if Char and not(Char:FindFirstChild("ESPHighlight")) then
 					local ESPHighlight = Instance.new("Highlight")
@@ -168,6 +172,10 @@ function f.game142823291(Window, Rayfield)
 					end
 
 					DeathConnections[#DeathConnections+1] = target.CharacterAdded:Connect(function()
+						if Char:FindFirstChild("ESPHighlight") then
+							Char:FindFirstChild("ESPHighlight"):Destroy()
+						end
+						
 						local ESPHighlight = Instance.new("Highlight")
 						ESPHighlight.Name = "ESPHighlight"
 						ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
@@ -181,8 +189,6 @@ function f.game142823291(Window, Rayfield)
 							ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
 						end
 					end)
-				else
-					Char:FindFirstChild("ESPHighlight"):Destroy()
 				end
 			end
 		end
