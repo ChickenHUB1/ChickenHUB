@@ -172,7 +172,7 @@ function f.game142823291(Window, Rayfield)
 						NameLabel.Text = target.Name
 						NameLabel.TextScaled = true
 						NameLabel.BackgroundTransparency = 1
-						NameLabel.Font = Enum.FontWeight.Heavy
+						NameLabel.Font = Enum.Font.Arial
 						NameLabel.TextColor = Color3.fromRGB(0, 0, 0)
 						NameLabel.Name = "NameLabel"
 						NameLabel.Parent = NameTag
@@ -223,7 +223,7 @@ function f.game142823291(Window, Rayfield)
 							NameLabel.Text = target.Name
 							NameLabel.TextScaled = true
 							NameLabel.BackgroundTransparency = 1
-							NameLabel.Font = Enum.FontWeight.Heavy
+							NameLabel.Font = Enum.Font.Arial
 							NameLabel.TextColor = Color3.fromRGB(0, 0, 0)
 							NameLabel.Name = "NameLabel"
 							NameLabel.Parent = NameTag
