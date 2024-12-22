@@ -149,7 +149,7 @@ function f.game142823291(Window, Rayfield)
 			for _,target in pairs(game.Players:GetPlayers()) do
 				local Char = target and target.Character
 				
-				if Char:FindFirstChild("ESPHighlight") then
+				if Char and Char:FindFirstChild("ESPHighlight") then
 					Char:FindFirstChild("ESPHighlight"):Destroy()
 				end
 
@@ -172,7 +172,7 @@ function f.game142823291(Window, Rayfield)
 					end
 
 					DeathConnections[#DeathConnections+1] = target.CharacterAdded:Connect(function(char2)
-						if char2:FindFirstChild("ESPHighlight") then
+						if Char and char2 and char2:FindFirstChild("ESPHighlight") then
 							char2:FindFirstChild("ESPHighlight"):Destroy()
 						end
 						
