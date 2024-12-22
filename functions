@@ -234,9 +234,9 @@ function f.game142823291(Window, Rayfield)
 			ESPActivated = Value
 			
 			if ESPActivated then
-				CreateHighlights()
+				task.spawn(CreateHighlights)
 			else
-				RemoveHighlights()
+				task.spawn(RemoveHighlights)
 			end
 		end,
 	})
