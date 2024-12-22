@@ -235,40 +235,40 @@ function f.game142823291(Window, Rayfield)
 			end
 		end,
 	})
-	local GunESP = Tab:CreateToggle({
-		Name = "Gun ESP",
-		CurrentValue = false,
-		Flag = "MM2ESP2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-		Callback = function(Value)
-			f:CheckVersion(Rayfield)
+	--local GunESP = Tab:CreateToggle({
+	--	Name = "Gun ESP",
+	--	CurrentValue = false,
+	--	Flag = "MM2ESP2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	--	Callback = function(Value)
+	--		f:CheckVersion(Rayfield)
 			
-			GunESP = Value
+	--		GunESP = Value
 			
-			if GunESP then
-				f:CheckVersion(Rayfield)
+	--		if GunESP then
+	--			f:CheckVersion(Rayfield)
 
-				while GunESP == true and task.wait() do
-					local Gun
+	--			while GunESP == true and task.wait() do
+	--				local Gun
 
-					for _,part in pairs(workspace:GetDescendants()) do
-						if part:IsA("BasePart") and part.Name == "GunDrop" then
-							Gun = part
+	--				for _,part in pairs(workspace:GetDescendants()) do
+	--					if part:IsA("BasePart") and part.Name == "GunDrop" then
+	--						Gun = part
 
-							break
-						end
-					end
+	--						break
+	--					end
+	--				end
 
-					if Gun then
-						local Highlight = Instance.new("Highlight")
-						Highlight.FillColor = Color3.fromRGB(0, 0, 200)
-						Highlight.OutlineColor = Color3.fromRGB(255, 255, 255)
-						Highlight.OutlineTransparency = 0
-						Highlight.Parent = Gun
-					end
-				end
-			end
-		end,
-	})
+	--				if Gun then
+	--					local Highlight = Instance.new("Highlight")
+	--					Highlight.FillColor = Color3.fromRGB(0, 0, 200)
+	--					Highlight.OutlineColor = Color3.fromRGB(255, 255, 255)
+	--					Highlight.OutlineTransparency = 0
+	--					Highlight.Parent = Gun
+	--				end
+	--			end
+	--		end
+	--	end,
+	--})
 	local KillMurdererButton = Tab:CreateButton({
 		Name = "Kill murderer",
 
