@@ -161,7 +161,7 @@ function f.game142823291(Window, Rayfield)
 					end
 					if not(Char:FindFirstChild("Head"):FindFirstChild("NameTag")) then
 						NameTag = Instance.new("BillboardGui")
-						NameTag.Size = UDim2.fromScale(10, 2.5)
+						NameTag.Size = UDim2.fromScale(10, 1.75)
 						NameTag.AlwaysOnTop = true
 						NameTag.Name = "NameTag"
 						NameTag.StudsOffsetWorldSpace = Vector3.new(0, 3, 0)
@@ -213,7 +213,7 @@ function f.game142823291(Window, Rayfield)
 						end
 						if not(Char:FindFirstChild("Head"):FindFirstChild("NameTag")) then
 							NameTag = Instance.new("BillboardGui")
-							NameTag.Size = UDim2.fromScale(10, 2.5)
+							NameTag.Size = UDim2.fromScale(10, 1.75)
 							NameTag.AlwaysOnTop = true
 							NameTag.Name = "NameTag"
 							NameTag.StudsOffsetWorldSpace = Vector3.new(0, 3, 0)
