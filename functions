@@ -206,6 +206,8 @@ function f.game142823291(Window, Rayfield)
 		end
 	end
 	local function RemoveHighlights()
+		DeathConnections = {}
+		
 		for _,target in pairs(game.Players:GetPlayers()) do
 			local Char = target and target.Character
 
@@ -214,8 +216,6 @@ function f.game142823291(Window, Rayfield)
 				Highlight:Destroy()
 			end
 		end
-		
-		DeathConnections = {}
 	end
 
 	local InnocentSection = Tab:CreateSection("Innocent")
