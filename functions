@@ -141,7 +141,7 @@ function f.game142823291(Window, Rayfield)
 	local DeathConnections = {}
 	
 	local function CreateHighlights()
-		while ESPActivated == true and task.wait() do
+		while ESPActivated == true and task.wait(1) do
 			if ESPActivated == false then
 				break
 			end
