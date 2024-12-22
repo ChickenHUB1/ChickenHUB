@@ -135,8 +135,56 @@ function f.game142823291(Window, Rayfield)
 	local MurderSection = Tab:CreateSection("Murderer")
 
 	local KillMurdererCooldown = false
+	local ESPActivated = false
+	
+	local function CreateHighlights()
+		for _,target in pairs(game.Players:GetPlayers()) do
+			local Char = target and target.Character
+			
+			if Char and not(Char:FindFirstChild("ESPHighlight")) then
+				local ESPHighlight = Instance.new("Highlight")
+				ESPHighlight.Name = "ESPHighlight"
+				ESPHighlight.Parent = Char
+			end
+		end
+		
+		return "Done!"
+	end
+	local function RemoveHighlights()
+		for _,target in pairs(game.Players:GetPlayers()) do
+			local Char = target and target.Character
+
+			if Char and Char:FindFirstChild("ESPHighlight") then
+				local Highlight = Char:FindFirstChild("ESPHighlight")
+				Highlight:Destroy()
+			end
+		end
+		
+		return "Done!"
+	end
 
 	local InnocentSection = Tab:CreateSection("Innocent")
+	local ESPAll = Tab:CreateButton({
+		Name = "ESP",
+		
+		Callback = function()
+			if ESPActivated == false then
+				ESPActivated = true
+				Rayfield:Notify({
+					Title = "Notification",
+					Content = CreateHighlights(),
+					Duration = 2.5
+				})
+			else
+				ESPActivated = false
+				Rayfield:Notify({
+					Title = "Notification",
+					Content = RemoveHighlights(),
+					Duration = 2.5
+				})
+			end
+		end,
+	})
 	local KillMurdererButton = Tab:CreateButton({
 		Name = "Kill murderer",
 
