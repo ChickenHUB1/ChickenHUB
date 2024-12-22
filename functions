@@ -166,10 +166,14 @@ function f.game142823291(Window, Rayfield)
 						NameTag.Name = "NameTag"
 						NameTag.StudsOffsetWorldSpace = Vector3.new(0, 3, 0)
 						NameTag.Parent = Char:FindFirstChild("Head")
-						
+
 						NameLabel = Instance.new("TextLabel")
 						NameLabel.Size = UDim2.fromScale(1, 1)
 						NameLabel.Text = target.Name
+						NameLabel.TextScaled = true
+						NameLabel.BackgroundTransparency = 1
+						NameLabel.Font = Enum.FontWeight.Heavy
+						NameLabel.TextColor = Color3.fromRGB(0, 0, 0)
 						NameLabel.Name = "NameLabel"
 						NameLabel.Parent = NameTag
 					end
@@ -217,6 +221,10 @@ function f.game142823291(Window, Rayfield)
 							NameLabel = Instance.new("TextLabel")
 							NameLabel.Size = UDim2.fromScale(1, 1)
 							NameLabel.Text = target.Name
+							NameLabel.TextScaled = true
+							NameLabel.BackgroundTransparency = 1
+							NameLabel.Font = Enum.FontWeight.Heavy
+							NameLabel.TextColor = Color3.fromRGB(0, 0, 0)
 							NameLabel.Name = "NameLabel"
 							NameLabel.Parent = NameTag
 						end
