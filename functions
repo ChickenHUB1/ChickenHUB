@@ -240,7 +240,7 @@ function f.game142823291(Window, Rayfield)
 							ESPHighlight = Char:FindFirstChild("ESPHighlight")
 						end
 
-						if target == game.Players.LocalPlayer then
+						if ESPHighlight and NameTag and target == game.Players.LocalPlayer then
 							ESPHighlight:Destroy()
 							NameTag:Destroy()
 						end
