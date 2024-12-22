@@ -211,7 +211,7 @@ function f.game142823291(Window, Rayfield)
 							ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
 							ESPHighlight.Parent = Char
 						end
-						if Char and not(Char:FindFirstChild("Head"):FindFirstChild("NameTag")) then
+						if Char and not(Char:WaitForChild("Head"):FindFirstChild("NameTag")) then
 							NameTag = Instance.new("BillboardGui")
 							NameTag.Size = UDim2.fromScale(10, 1.75)
 							NameTag.AlwaysOnTop = true
