@@ -192,7 +192,7 @@ function f.game142823291(Window, Rayfield)
 						NameTag:Destroy()
 					end
 
-					if target.Backpack:FindFirstChild("Knife") or Char:FindFirstChild("Knife") then
+					if ESPHighlight and (target.Backpack:FindFirstChild("Knife") or Char:FindFirstChild("Knife")) then
 						ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
 					elseif target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
 						ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
@@ -206,7 +206,7 @@ function f.game142823291(Window, Rayfield)
 						
 						task.wait(2.5)
 
-						if Char and not(Char:FindFirstChild("ESPHighlight") or (Char:FindFirstChild("Head") or Char:FindFirstChild("Head"):FindFirstChild("NameTag"))) then
+						if Char and not(Char:FindFirstChild("ESPHighlight")) then
 							ESPHighlight = Instance.new("Highlight")
 							ESPHighlight.Name = "ESPHighlight"
 							ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
@@ -245,7 +245,7 @@ function f.game142823291(Window, Rayfield)
 							NameTag:Destroy()
 						end
 
-						if target.Backpack:FindFirstChild("Knife") or Char:FindFirstChild("Knife") then
+						if ESPHighlight and (target.Backpack:FindFirstChild("Knife") or Char:FindFirstChild("Knife")) then
 							ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
 						elseif target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
 							ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
