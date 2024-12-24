@@ -278,18 +278,18 @@ function f.game142823291(Window, Rayfield)
 						end
 
 						if NameTag == nil then
-							if JoinChar:FindFirstChild("Head"):FindFirstChild("NameTag") then
-								NameTag = JoinChar:FindFirstChild("Head"):FindFirstChild("NameTag")
+							if JoinChar:FindFirstChild("Head") and JoinChar:FindFirstChild("Head"):FindFirstChild("NameTag") then
+								NameTag = Head:FindFirstChild("NameTag")
 							end
 						end
 						if NameLabel == nil then
-							if NameTag:FindFirstChild("NameLabel") then
+							if NameTag and NameTag:FindFirstChild("NameLabel") then
 								NameLabel = NameTag:FindFirstChild("NameLabel")
 							end
 						end
 
 						if ESPHighlight == nil then
-							if JoinChar:FindFirstChild("ESPHighlight") then
+							if JoinChar and JoinChar:FindFirstChild("ESPHighlight") then
 								ESPHighlight = JoinChar:FindFirstChild("ESPHighlight")
 							end
 						end
@@ -374,18 +374,18 @@ function f.game142823291(Window, Rayfield)
 						end
 
 						if NameTag == nil then
-							if char2:FindFirstChild("Head"):FindFirstChild("NameTag") then
+							if char2 and char2:FindFirstChild("Head") and char2:FindFirstChild("Head"):FindFirstChild("NameTag") then
 								NameTag = char2:FindFirstChild("Head"):FindFirstChild("NameTag")
 							end
 						end
 						if NameLabel == nil then
-							if NameTag:FindFirstChild("NameLabel") then
+							if NameTag and NameTag:FindFirstChild("NameLabel") then
 								NameLabel = NameTag:FindFirstChild("NameLabel")
 							end
 						end
 
 						if ESPHighlight == nil then
-							if char2:FindFirstChild("ESPHighlight") then
+							if char2 and char2:FindFirstChild("ESPHighlight") then
 								ESPHighlight = char2:FindFirstChild("ESPHighlight")
 							end
 						end
