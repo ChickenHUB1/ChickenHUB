@@ -424,12 +424,16 @@ function f.game142823291(Window, Rayfield)
 		for _,target in pairs(game.Players:GetPlayers()) do
 			local Char = target and target.Character
 
-			if Char and Char:FindFirstChild("ESPHighlight") and Char:FindFirstChild("Head"):FindFirstChild("NameTag") then
+			if Char then
 				local Highlight = Char:FindFirstChild("ESPHighlight")
 				local NameTag = Char:FindFirstChild("Head"):FindFirstChild("NameTag")
 				
-				NameTag:Destroy()
-				Highlight:Destroy()
+				if Highlight then
+					Highlight:Destroy()
+				end
+				if NameTag then
+					NameTag:Destroy()
+				end
 			end
 		end
 	end
