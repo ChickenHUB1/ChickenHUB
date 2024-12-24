@@ -136,10 +136,11 @@ function f.game142823291(Window, Rayfield)
 
 	local KillMurdererCooldown = false
 	local ESPActivated = false
-	local GunESP = false
+	local CoinAutoFarm = false
 	
 	local DeathConnections = {}
 	local JoinConnections = {}
+	local LPCharConnection: RBXScriptConnection
 	
 	local function CreateHighlights()
 		while ESPActivated == true and task.wait(1) do
@@ -408,6 +409,15 @@ function f.game142823291(Window, Rayfield)
 			end
 		end
 	end
+	
+	local function AutoFarmCoins()
+		local localplayer = game.Players.LocalPlayer
+		local char = localplayer and (localplayer.Character or localplayer.CharacterAdded:Wait())
+		
+		if localplayer and char then
+			
+		end
+	end
 
 	local InnocentSection = Tab:CreateSection("Innocent")
 	local ESPAll = Tab:CreateToggle({
@@ -424,6 +434,18 @@ function f.game142823291(Window, Rayfield)
 			else
 				task.spawn(RemoveHighlights)
 			end
+		end,
+	})
+	local ESPAll = Tab:CreateToggle({
+		Name = "Auto farm coins",
+		CurrentValue = false,
+		Flag = "MM2CoinFarm1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+		Callback = function(Value)
+			f:CheckVersion(Rayfield)
+
+			CoinAutoFarm = Value
+			
+			task.spawn(AutoFarmCoins)
 		end,
 	})
 	--local GunESP = Tab:CreateToggle({
@@ -478,7 +500,7 @@ function f.game142823291(Window, Rayfield)
 				Thrust.P = 2^9999
 				local Thrust2 = Instance.new("BodyThrust")
 				Thrust2.Parent = Character:FindFirstChild("HumanoidRootPart")
-				Thrust2.Force = Vector3.new(1000,0,1000)
+				Thrust2.Force = Vector3.new(500,0,500)
 
 				for _,tplayer in pairs(game.Players:GetPlayers()) do
 					if tplayer and tplayer.Character then
