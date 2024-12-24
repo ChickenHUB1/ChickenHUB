@@ -185,7 +185,7 @@ function f.game142823291(Window, Rayfield)
 						NameTag = Char:FindFirstChild("Head"):FindFirstChild("NameTag")
 					end
 					if NameLabel == nil then
-						NameLabel = NameTag:WaitForChild("NameLabel")
+						NameLabel = NameTag:FindFirstChild("NameLabel")
 					end
 
 					if ESPHighlight == nil then
@@ -245,7 +245,7 @@ function f.game142823291(Window, Rayfield)
 							NameTag = Char:FindFirstChild("Head"):FindFirstChild("NameTag")
 						end
 						if NameLabel == nil then
-							NameLabel = NameTag:WaitForChild("NameLabel")
+							NameLabel = NameTag:FindFirstChild("NameLabel")
 						end
 
 						if ESPHighlight == nil then
