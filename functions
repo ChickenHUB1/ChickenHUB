@@ -190,9 +190,9 @@ function f.game142823291(Window, Rayfield)
 						ESPHighlight = Char:FindFirstChild("ESPHighlight")
 					end
 					
-					print("NameLabel Status: ", NameLabel)
-					print("NameTag Status: ", NameTag)
-					print("ESPHighlight Status: ", ESPHighlight)
+					--print("NameLabel Status: ", NameLabel)
+					--print("NameTag Status: ", NameTag)
+					--print("ESPHighlight Status: ", ESPHighlight)
 
 					if ESPHighlight and NameTag and target == game.Players.LocalPlayer then
 						ESPHighlight:Destroy()
@@ -252,9 +252,9 @@ function f.game142823291(Window, Rayfield)
 							ESPHighlight = Char:FindFirstChild("ESPHighlight")
 						end
 						
-						print("NameLabel Status: ", NameLabel)
-						print("NameTag Status: ", NameTag)
-						print("ESPHighlight Status: ", ESPHighlight)
+						--print("NameLabel Status: ", NameLabel)
+						--print("NameTag Status: ", NameTag)
+						--print("ESPHighlight Status: ", ESPHighlight)
 
 						if ESPHighlight and NameTag and target == game.Players.LocalPlayer then
 							ESPHighlight:Destroy()
