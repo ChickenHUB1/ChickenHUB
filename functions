@@ -277,75 +277,20 @@ function f.game142823291(Window, Rayfield)
 							NameLabel.Parent = NameTag
 						end
 
-						if NameTag == nil then
-							if JoinChar:FindFirstChild("Head") and JoinChar:FindFirstChild("Head"):FindFirstChild("NameTag") then
-								NameTag = Head:FindFirstChild("NameTag")
-							end
-						end
-						if NameLabel == nil then
-							if NameTag and NameTag:FindFirstChild("NameLabel") then
-								NameLabel = NameTag:FindFirstChild("NameLabel")
-							end
-						end
-
-						if ESPHighlight == nil then
-							if JoinChar and JoinChar:FindFirstChild("ESPHighlight") then
-								ESPHighlight = JoinChar:FindFirstChild("ESPHighlight")
-							end
-						end
-
-						if NameTag == nil then
-							NameTag = Instance.new("BillboardGui")
-							NameTag.Size = UDim2.fromScale(10, 1.75)
-							NameTag.AlwaysOnTop = true
-							NameTag.Name = "NameTag"
-							NameTag.StudsOffsetWorldSpace = Vector3.new(0, 3, 0)
-							NameTag.Parent = JoinChar:FindFirstChild("Head")
-
-							NameLabel = Instance.new("TextLabel")
-							NameLabel.Size = UDim2.fromScale(1, 1)
-							NameLabel.Text = target.Name
-							NameLabel.TextScaled = true
-							NameLabel.BackgroundTransparency = 1
-							NameLabel.Font = Enum.Font.Arial
-							NameLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-							NameLabel.Name = "NameLabel"
-							NameLabel.Parent = NameTag
-						end
-
-						if ESPHighlight == nil then
-							ESPHighlight = Instance.new("Highlight")
-							ESPHighlight.Name = "ESPHighlight"
-							ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
-							ESPHighlight.Parent = JoinChar
-						end
-
 						--print("NameLabel Status: ", NameLabel)
 						--print("NameTag Status: ", NameTag)
 						--print("ESPHighlight Status: ", ESPHighlight)
 
-						if ESPHighlight and NameTag and target == game.Players.LocalPlayer then
-							ESPHighlight:Destroy()
-							NameTag:Destroy()
-						end
-
-						while ESPActivated == true and task.wait(1) do
-							if Char or JoinChar then
-								if ESPHighlight and (target.Backpack:FindFirstChild("Knife") or JoinChar:FindFirstChild("Knife")) then
-									ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
-								elseif ESPHighlight and target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
-									ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
-								elseif ESPHighlight then
-									ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
-								else
-									warn("Error while assigning color to the Highlights")
-								end
-							end
-						end
+						--if ESPHighlight and NameTag and target == game.Players.LocalPlayer then
+						--	ESPHighlight:Destroy()
+						--	NameTag:Destroy()
+						--end
 					end)
 					DeathConnections[#DeathConnections+1] = target.CharacterAdded:Connect(function(char2)
 						local ESPHighlight: Highlight = nil
 						local NameTag: BillboardGui, NameLabel: TextLabel = nil, nil
+						
+						local deathplayer = game.Players:GetPlayerFromCharacter(char2)
 
 						task.wait(5)
 
@@ -428,16 +373,18 @@ function f.game142823291(Window, Rayfield)
 						end
 
 						while ESPActivated == true and task.wait(1) do
-							if Char or char2 then
-								if ESPHighlight and (target.Backpack:FindFirstChild("Knife") or char2:FindFirstChild("Knife")) then
+							if char2 and deathplayer then
+								if ESPHighlight and (deathplayer.Backpack:FindFirstChild("Knife") or char2:FindFirstChild("Knife")) then
 									ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
-								elseif ESPHighlight and target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
+								elseif ESPHighlight and deathplayer.Backpack:FindFirstChild("Gun") or char2:FindFirstChild("Gun") then
 									ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
 								elseif ESPHighlight then
 									ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
 								else
 									warn("Error while assigning color to the Highlights")
 								end
+							else
+								print("Players character wasn't found, retrying...")
 							end
 						end
 					end)
