@@ -177,10 +177,6 @@ function f.game142823291(Window, Rayfield)
 						NameLabel.Parent = NameTag
 					end
 					
-					print("NameLabel Status: ", NameLabel)
-					print("NameTag Status: ", NameTag)
-					print("ESPHighlight Status: ", ESPHighlight)
-					
 					if NameTag == nil then
 						NameTag = Char:FindFirstChild("Head"):FindFirstChild("NameTag")
 					end
@@ -191,6 +187,10 @@ function f.game142823291(Window, Rayfield)
 					if ESPHighlight == nil then
 						ESPHighlight = Char:FindFirstChild("ESPHighlight")
 					end
+					
+					print("NameLabel Status: ", NameLabel)
+					print("NameTag Status: ", NameTag)
+					print("ESPHighlight Status: ", ESPHighlight)
 
 					if ESPHighlight and NameTag and target == game.Players.LocalPlayer then
 						ESPHighlight:Destroy()
@@ -236,10 +236,6 @@ function f.game142823291(Window, Rayfield)
 							NameLabel.Name = "NameLabel"
 							NameLabel.Parent = NameTag
 						end
-						
-						print("NameLabel Status: ", NameLabel)
-						print("NameTag Status: ", NameTag)
-						print("ESPHighlight Status: ", ESPHighlight)
 
 						if NameTag == nil then
 							NameTag = Char:FindFirstChild("Head"):FindFirstChild("NameTag")
@@ -251,6 +247,10 @@ function f.game142823291(Window, Rayfield)
 						if ESPHighlight == nil then
 							ESPHighlight = Char:FindFirstChild("ESPHighlight")
 						end
+						
+						print("NameLabel Status: ", NameLabel)
+						print("NameTag Status: ", NameTag)
+						print("ESPHighlight Status: ", ESPHighlight)
 
 						if ESPHighlight and NameTag and target == game.Players.LocalPlayer then
 							ESPHighlight:Destroy()
