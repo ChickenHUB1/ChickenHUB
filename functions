@@ -257,6 +257,12 @@ function f.game142823291(Window, Rayfield)
 							ESPHighlight.Name = "ESPHighlight"
 							ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
 							ESPHighlight.Parent = JoinChar or jointarget.Character
+							
+							Rayfield:Notify({
+								Title = "Chams Notification",
+								Content = "Created highlight for newly joined player "..jointarget.Name..".",
+								Duration = 10
+							})
 						end
 
 						if (JoinChar and JoinChar:FindFirstChild("Head")) and not(JoinChar:FindFirstChild("Head"):FindFirstChild("NameTag")) then
@@ -276,6 +282,12 @@ function f.game142823291(Window, Rayfield)
 							NameLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
 							NameLabel.Name = "NameLabel"
 							NameLabel.Parent = NameTag
+							
+							Rayfield:Notify({
+								Title = "Chams Notification",
+								Content = "Created NameTags for newly joined player "..jointarget.Name..".",
+								Duration = 10
+							})
 						end
 
 						--print("NameLabel Status: ", NameLabel)
@@ -300,6 +312,12 @@ function f.game142823291(Window, Rayfield)
 							ESPHighlight.Name = "ESPHighlight"
 							ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
 							ESPHighlight.Parent = char2
+							
+							Rayfield:Notify({
+								Title = "Chams Notification",
+								Content = "Created highlight for newly joined player "..deathplayer.Name..".",
+								Duration = 10
+							})
 						end
 
 						if (char2 and char2:FindFirstChild("Head")) and not(char2:FindFirstChild("Head"):FindFirstChild("NameTag")) then
@@ -319,6 +337,12 @@ function f.game142823291(Window, Rayfield)
 							NameLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
 							NameLabel.Name = "NameLabel"
 							NameLabel.Parent = NameTag
+							
+							Rayfield:Notify({
+								Title = "Chams Notification",
+								Content = "Created NameTags for newly joined player "..deathplayer.Name..".",
+								Duration = 10
+							})
 						end
 
 						if NameTag == nil then
@@ -436,7 +460,7 @@ function f.game142823291(Window, Rayfield)
 			end
 		end,
 	})
-	local ESPAll = Tab:CreateToggle({
+	local AutoFarmCoins = Tab:CreateToggle({
 		Name = "Auto farm coins",
 		CurrentValue = false,
 		Flag = "MM2CoinFarm1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
