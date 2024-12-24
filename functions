@@ -330,8 +330,8 @@ function f.game142823291(Window, Rayfield)
 						end
 
 						while ESPActivated == true and task.wait(1) do
-							if Char or char2 then
-								if ESPHighlight and (target.Backpack:FindFirstChild("Knife") or char2:FindFirstChild("Knife")) then
+							if Char or JoinChar then
+								if ESPHighlight and (target.Backpack:FindFirstChild("Knife") or JoinChar:FindFirstChild("Knife")) then
 									ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
 								elseif ESPHighlight and target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
 									ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
