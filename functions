@@ -438,8 +438,47 @@ function f.game142823291(Window, Rayfield)
 		local localplayer = game.Players.LocalPlayer
 		local char = localplayer and (localplayer.Character or localplayer.CharacterAdded:Wait())
 		
+		local TS = game:GetService("TweenService")
+		
 		if localplayer and char then
+			local function GetCoinContainer()
+				for _,model in pairs(workspace:GetDescendants()) do
+					if model:IsA("Model") and model.Name == "CoinContainer" then
+						return model
+					end
+				end
+			end
+			local function GetRandomCoin()
+				local CoinContainer: Model = GetCoinContainer()
+				
+				if CoinContainer then
+					local RandomCoin: BasePart = CoinContainer:GetChildren()[math.random(1, #CoinContainer:GetChildren())]
+					
+					if RandomCoin then
+						local CFrameOfCoin = RandomCoin.CFrame
+						
+						if localplayer and char then
+							local HRP: BasePart = char:FindFirstChild("HumanoidRootPart")
+							
+							if HRP then
+								local MoveToCoin = TS:Create(HRP, TweenInfo.new(2), {CFrame = CFrameOfCoin})
+								MoveToCoin:Play()
+								MoveToCoin.Completed:Wait()
+							end
+						end
+					else
+						RandomCoin = CoinContainer:GetChildren()[math.random(1, #CoinContainer:GetChildren())]
+					end
+				end
+			end
 			
+			while CoinAutoFarm == true and task.wait(1) do
+				if CoinAutoFarm == false then
+					break
+				end
+				
+				GetRandomCoin()
+			end
 		end
 	end
 
@@ -574,6 +613,10 @@ function f.game142823291(Window, Rayfield)
 					--Thrust:Destroy()
 					--break
 					--end
+					
+					if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Health <= 0 then
+						break
+					end
 
 					if MurdererChar and Character and (MurdererChar:FindFirstChildOfClass("Humanoid").Health or Character:FindFirstChildOfClass("Humanoid").Health) <= 0 then
 						break
