@@ -255,7 +255,7 @@ function f.game142823291(Window, Rayfield)
 							ESPHighlight = Instance.new("Highlight")
 							ESPHighlight.Name = "ESPHighlight"
 							ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
-							ESPHighlight.Parent = JoinChar
+							ESPHighlight.Parent = JoinChar or jointarget.Character
 						end
 
 						if (JoinChar and JoinChar:FindFirstChild("Head")) and not(JoinChar:FindFirstChild("Head"):FindFirstChild("NameTag")) then
