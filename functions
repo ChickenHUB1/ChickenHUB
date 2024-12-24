@@ -199,7 +199,7 @@ function f.game142823291(Window, Rayfield)
 
 					if ESPHighlight and (target.Backpack:FindFirstChild("Knife") or Char:FindFirstChild("Knife")) then
 						ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
-					elseif ESPHighlight target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
+					elseif ESPHighlight and target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
 						ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
 					elseif ESPHighlight then
 						ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
@@ -259,7 +259,7 @@ function f.game142823291(Window, Rayfield)
 
 						if ESPHighlight and (target.Backpack:FindFirstChild("Knife") or Char:FindFirstChild("Knife")) then
 							ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
-						elseif ESPHighlight target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
+						elseif ESPHighlight and target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
 							ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
 						elseif ESPHighlight then
 							ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
