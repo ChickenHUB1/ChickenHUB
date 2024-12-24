@@ -465,7 +465,7 @@ function f.game142823291(Window, Rayfield)
 							local HRP: BasePart = char:FindFirstChild("HumanoidRootPart")
 							
 							if HRP then
-								HRP.CFrame = CFrameOfCoin * Vector3.new(0, 1, 0)
+								HRP.CFrame = CFrameOfCoin * CFrame.new(0, 1, 0)
 								
 								wait(1)
 							end
