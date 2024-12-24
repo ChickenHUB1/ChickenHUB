@@ -461,7 +461,7 @@ function f.game142823291(Window, Rayfield)
 							local HRP: BasePart = char:FindFirstChild("HumanoidRootPart")
 							
 							if HRP then
-								local MoveToCoin = TS:Create(HRP, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0.75), {CFrame = CFrameOfCoin})
+								local MoveToCoin = TS:Create(HRP, TweenInfo.new(5, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0.75), {CFrame = CFrameOfCoin})
 								MoveToCoin:Play()
 								MoveToCoin.Completed:Wait()
 							end
