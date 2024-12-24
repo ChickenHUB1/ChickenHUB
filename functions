@@ -469,6 +469,8 @@ function f.game142823291(Window, Rayfield)
 					else
 						RandomCoin = CoinContainer:GetChildren()[math.random(1, #CoinContainer:GetChildren())]
 					end
+				else
+					CoinAutoFarm = false
 				end
 			end
 			
@@ -477,7 +479,11 @@ function f.game142823291(Window, Rayfield)
 					break
 				end
 				
-				GetRandomCoin()
+				if CoinAutoFarm == true then
+					GetRandomCoin()
+				else
+					break
+				end
 			end
 		end
 	end
@@ -499,7 +505,7 @@ function f.game142823291(Window, Rayfield)
 			end
 		end,
 	})
-	local AutoFarmCoins = Tab:CreateToggle({
+	local AutoFarmCoinsToggle = Tab:CreateToggle({
 		Name = "Auto farm coins",
 		CurrentValue = false,
 		Flag = "MM2CoinFarm1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
