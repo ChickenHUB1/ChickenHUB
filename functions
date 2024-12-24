@@ -1,5 +1,6 @@
 --local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 local Version = loadstring(game:HttpGet('https://raw.githubusercontent.com/ChickenHUB1/ChickenHUB/refs/heads/main/Version'))()
+local WhitelistedGamesTable = loadstring(game:HttpGet('https://raw.githubusercontent.com/ChickenHUB1/ChickenHUB/refs/heads/main/whitelistedplaceids'))()
 
 local VersionCheckCooldown = false
 
@@ -782,6 +783,7 @@ end
 function f:LoadExtra(Window, Rayfield)
 	local ChangelogTab = Window:CreateTab("Changelog", nil)
 	local ExtraTab = Window:CreateTab("Extra", nil)
+	local WhitelistedGamesTab = Window:CreateTab("Whitelisted Games", nil)
 	
 	local Date12_24_24 = ChangelogTab:CreateParagraph({
 		Title = "Update - 12/24/24",
@@ -829,6 +831,22 @@ function f:LoadExtra(Window, Rayfield)
 		Title = "⚠WARNING⚠",
 		Content = "Using the universal scripts inside of a game could and can get you banned from some games with anti-cheat."
 	})
+	
+	local MPS = game:GetService("MarketplaceService")
+	
+	for _, gameplaceid in pairs(WhitelistedGamesTable) do
+		local GameInformation = MPS:GetProductInfo(gameplaceid)
+		
+		if GameInformation then
+			local GameTeleportButton = WhitelistedGamesTab:CreateButton({
+				Name = GameInformation.Name,
+				
+				Callback = function()
+					game:GetService("TeleportService"):Teleport(GameInformation.AssetId, game.Players.LocalPlayer)
+				end,
+			})
+		end
+	end
 end
 
 function f:CheckVersion(Rayfield)
