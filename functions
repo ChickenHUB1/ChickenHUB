@@ -182,18 +182,18 @@ function f.game142823291(Window, Rayfield)
 					end
 					
 					if NameTag == nil then
-						if Head:FindFirstChild("NameTag") then
+						if Head and Head:FindFirstChild("NameTag") then
 							NameTag = Head:FindFirstChild("NameTag")
 						end
 					end
 					if NameLabel == nil then
-						if NameTag:FindFirstChild("NameLabel") then
+						if NameTag and NameTag:FindFirstChild("NameLabel") then
 							NameLabel = NameTag:FindFirstChild("NameLabel")
 						end
 					end
 
 					if ESPHighlight == nil then
-						if Char:FindFirstChild("ESPHighlight") then
+						if Char and Char:FindFirstChild("ESPHighlight") then
 							ESPHighlight = Char:FindFirstChild("ESPHighlight")
 						end
 					end
