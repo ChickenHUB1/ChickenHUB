@@ -529,7 +529,7 @@ function f.game142823291(Window, Rayfield)
 				Thrust.P = 2^9999
 				local Thrust2 = Instance.new("BodyThrust")
 				Thrust2.Parent = Character:FindFirstChild("HumanoidRootPart")
-				Thrust2.Force = Vector3.new(9999,0,9999)
+				Thrust2.Force = Vector3.new(1000,0,1000)
 
 				for _,tplayer in pairs(game.Players:GetPlayers()) do
 					if tplayer and tplayer.Character then
