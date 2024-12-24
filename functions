@@ -472,10 +472,6 @@ function f.game142823291(Window, Rayfield)
 				end
 			end
 			
-			if CoinAutoFarm == true then
-				return
-			end
-			
 			while CoinAutoFarm == true and task.wait(1) do
 				if CoinAutoFarm == false then
 					break
