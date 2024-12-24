@@ -179,7 +179,8 @@ function f.game142823291(Window, Rayfield)
 					
 					if NameTag == nil then
 						NameTag = Char:WaitForChild("Head"):FindFirstChild("NameTag")
-					elseif NameLabel == nil then
+					end
+					if NameLabel == nil then
 						NameLabel = NameTag:WaitForChild("NameLabel")
 					end
 
@@ -232,7 +233,8 @@ function f.game142823291(Window, Rayfield)
 
 						if NameTag == nil then
 							NameTag = Char:WaitForChild("Head"):FindFirstChild("NameTag")
-						elseif NameLabel == nil then
+						end
+						if NameLabel == nil then
 							NameLabel = NameTag:WaitForChild("NameLabel")
 						end
 
