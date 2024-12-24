@@ -150,8 +150,8 @@ function f.game142823291(Window, Rayfield)
 				local Char = target and target.Character
 
 				if Char then
-					local ESPHighlight
-					local NameTag, NameLabel
+					local ESPHighlight = nil
+					local NameTag, NameLabel = nil, nil
 					
 					if Char and not(Char:FindFirstChild("ESPHighlight")) then
 						ESPHighlight = Instance.new("Highlight")
@@ -202,10 +202,10 @@ function f.game142823291(Window, Rayfield)
 					end
 
 					DeathConnections[#DeathConnections+1] = target.CharacterAdded:Connect(function(char2)
-						local ESPHighlight
-						local NameTag, NameLabel
+						local ESPHighlight = nil
+						local NameTag, NameLabel = nil, nil
 						
-						task.wait(2.5)
+						task.wait(5)
 
 						if Char and not(Char:FindFirstChild("ESPHighlight")) then
 							ESPHighlight = Instance.new("Highlight")
