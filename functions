@@ -783,6 +783,10 @@ function f:LoadExtra(Window, Rayfield)
 	local ChangelogTab = Window:CreateTab("Changelog", nil)
 	local ExtraTab = Window:CreateTab("Extra", nil)
 	
+	local Date12_24_24 = ChangelogTab:CreateParagraph({
+		Title = "Update - 12/24/24",
+		Content = "'Murder Mystery 2' kill murderer is finished, some tweaks in future. Adding / completing the auto farm coins. Also finished role chams. (hopefully)"
+	})
 	local Date12_21_24 = ChangelogTab:CreateParagraph({
 		Title = "Update - 12/21/24",
 		Content = "'Murder Mystery 2' kill murderer has been updated high chance of actually killing the murderer (flings)"
