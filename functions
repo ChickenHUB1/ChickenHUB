@@ -247,20 +247,20 @@ function f.game142823291(Window, Rayfield)
 						
 						task.wait(5)
 
-						if Char and not(Char:FindFirstChild("ESPHighlight")) then
+						if char2 and not(char2:FindFirstChild("ESPHighlight")) then
 							ESPHighlight = Instance.new("Highlight")
 							ESPHighlight.Name = "ESPHighlight"
 							ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
-							ESPHighlight.Parent = Char
+							ESPHighlight.Parent = char2
 						end
 
-						if (Char and Char:FindFirstChild("Head")) and not(Char:FindFirstChild("Head"):FindFirstChild("NameTag")) then
+						if (char2 and char2:FindFirstChild("Head")) and not(char2:FindFirstChild("Head"):FindFirstChild("NameTag")) then
 							NameTag = Instance.new("BillboardGui")
 							NameTag.Size = UDim2.fromScale(10, 1.75)
 							NameTag.AlwaysOnTop = true
 							NameTag.Name = "NameTag"
 							NameTag.StudsOffsetWorldSpace = Vector3.new(0, 3, 0)
-							NameTag.Parent = Char:FindFirstChild("Head")
+							NameTag.Parent = char2:FindFirstChild("Head")
 
 							NameLabel = Instance.new("TextLabel")
 							NameLabel.Size = UDim2.fromScale(1, 1)
@@ -274,8 +274,8 @@ function f.game142823291(Window, Rayfield)
 						end
 
 						if NameTag == nil then
-							if Char:FindFirstChild("Head"):FindFirstChild("NameTag") then
-								NameTag = Char:FindFirstChild("Head"):FindFirstChild("NameTag")
+							if char2:FindFirstChild("Head"):FindFirstChild("NameTag") then
+								NameTag = char2:FindFirstChild("Head"):FindFirstChild("NameTag")
 							end
 						end
 						if NameLabel == nil then
@@ -285,8 +285,8 @@ function f.game142823291(Window, Rayfield)
 						end
 
 						if ESPHighlight == nil then
-							if Char:FindFirstChild("ESPHighlight") then
-								ESPHighlight = Char:FindFirstChild("ESPHighlight")
+							if char2:FindFirstChild("ESPHighlight") then
+								ESPHighlight = char2:FindFirstChild("ESPHighlight")
 							end
 						end
 						
@@ -296,7 +296,7 @@ function f.game142823291(Window, Rayfield)
 							NameTag.AlwaysOnTop = true
 							NameTag.Name = "NameTag"
 							NameTag.StudsOffsetWorldSpace = Vector3.new(0, 3, 0)
-							NameTag.Parent = Char:FindFirstChild("Head")
+							NameTag.Parent = char2:FindFirstChild("Head")
 
 							NameLabel = Instance.new("TextLabel")
 							NameLabel.Size = UDim2.fromScale(1, 1)
@@ -313,7 +313,7 @@ function f.game142823291(Window, Rayfield)
 							ESPHighlight = Instance.new("Highlight")
 							ESPHighlight.Name = "ESPHighlight"
 							ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
-							ESPHighlight.Parent = Char
+							ESPHighlight.Parent = char2
 						end
 						
 						--print("NameLabel Status: ", NameLabel)
@@ -325,7 +325,7 @@ function f.game142823291(Window, Rayfield)
 							NameTag:Destroy()
 						end
 
-						if ESPHighlight and (target.Backpack:FindFirstChild("Knife") or Char:FindFirstChild("Knife")) then
+						if ESPHighlight and (target.Backpack:FindFirstChild("Knife") or char2:FindFirstChild("Knife")) then
 							ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
 						elseif ESPHighlight and target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
 							ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
