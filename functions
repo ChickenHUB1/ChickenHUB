@@ -190,6 +190,32 @@ function f.game142823291(Window, Rayfield)
 						ESPHighlight = Char:FindFirstChild("ESPHighlight")
 					end
 					
+					if NameTag == nil then
+						NameTag = Instance.new("BillboardGui")
+						NameTag.Size = UDim2.fromScale(10, 1.75)
+						NameTag.AlwaysOnTop = true
+						NameTag.Name = "NameTag"
+						NameTag.StudsOffsetWorldSpace = Vector3.new(0, 3, 0)
+						NameTag.Parent = Char:FindFirstChild("Head")
+
+						NameLabel = Instance.new("TextLabel")
+						NameLabel.Size = UDim2.fromScale(1, 1)
+						NameLabel.Text = target.Name
+						NameLabel.TextScaled = true
+						NameLabel.BackgroundTransparency = 1
+						NameLabel.Font = Enum.Font.Arial
+						NameLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+						NameLabel.Name = "NameLabel"
+						NameLabel.Parent = NameTag
+					end
+
+					if ESPHighlight == nil then
+						ESPHighlight = Instance.new("Highlight")
+						ESPHighlight.Name = "ESPHighlight"
+						ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
+						ESPHighlight.Parent = Char
+					end
+					
 					--print("NameLabel Status: ", NameLabel)
 					--print("NameTag Status: ", NameTag)
 					--print("ESPHighlight Status: ", ESPHighlight)
@@ -250,6 +276,32 @@ function f.game142823291(Window, Rayfield)
 
 						if ESPHighlight == nil then
 							ESPHighlight = Char:FindFirstChild("ESPHighlight")
+						end
+						
+						if NameTag == nil then
+							NameTag = Instance.new("BillboardGui")
+							NameTag.Size = UDim2.fromScale(10, 1.75)
+							NameTag.AlwaysOnTop = true
+							NameTag.Name = "NameTag"
+							NameTag.StudsOffsetWorldSpace = Vector3.new(0, 3, 0)
+							NameTag.Parent = Char:FindFirstChild("Head")
+
+							NameLabel = Instance.new("TextLabel")
+							NameLabel.Size = UDim2.fromScale(1, 1)
+							NameLabel.Text = target.Name
+							NameLabel.TextScaled = true
+							NameLabel.BackgroundTransparency = 1
+							NameLabel.Font = Enum.Font.Arial
+							NameLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+							NameLabel.Name = "NameLabel"
+							NameLabel.Parent = NameTag
+						end
+						
+						if ESPHighlight == nil then
+							ESPHighlight = Instance.new("Highlight")
+							ESPHighlight.Name = "ESPHighlight"
+							ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
+							ESPHighlight.Parent = Char
 						end
 						
 						--print("NameLabel Status: ", NameLabel)
