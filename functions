@@ -258,11 +258,11 @@ function f.game142823291(Window, Rayfield)
 							ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
 							ESPHighlight.Parent = JoinChar or jointarget.Character
 							
-							Rayfield:Notify({
-								Title = "Chams Notification",
-								Content = "Created highlight for newly joined player "..jointarget.Name..".",
-								Duration = 10
-							})
+							--Rayfield:Notify({
+							--	Title = "Chams Notification",
+							--	Content = "Created highlight for newly joined player "..jointarget.Name..".",
+							--	Duration = 10
+							--})
 						end
 
 						if (JoinChar and JoinChar:FindFirstChild("Head")) and not(JoinChar:FindFirstChild("Head"):FindFirstChild("NameTag")) then
@@ -283,11 +283,11 @@ function f.game142823291(Window, Rayfield)
 							NameLabel.Name = "NameLabel"
 							NameLabel.Parent = NameTag
 							
-							Rayfield:Notify({
-								Title = "Chams Notification",
-								Content = "Created NameTags for newly joined player "..jointarget.Name..".",
-								Duration = 10
-							})
+							--Rayfield:Notify({
+							--	Title = "Chams Notification",
+							--	Content = "Created NameTags for newly joined player "..jointarget.Name..".",
+							--	Duration = 10
+							--})
 						end
 
 						--print("NameLabel Status: ", NameLabel)
@@ -313,11 +313,11 @@ function f.game142823291(Window, Rayfield)
 							ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
 							ESPHighlight.Parent = char2
 							
-							Rayfield:Notify({
-								Title = "Chams Notification",
-								Content = "Created highlight for newly joined player "..deathplayer.Name..".",
-								Duration = 10
-							})
+							--Rayfield:Notify({
+							--	Title = "Chams Notification",
+							--	Content = "Created highlight for newly joined player "..deathplayer.Name..".",
+							--	Duration = 10
+							--})
 						end
 
 						if (char2 and char2:FindFirstChild("Head")) and not(char2:FindFirstChild("Head"):FindFirstChild("NameTag")) then
@@ -338,11 +338,11 @@ function f.game142823291(Window, Rayfield)
 							NameLabel.Name = "NameLabel"
 							NameLabel.Parent = NameTag
 							
-							Rayfield:Notify({
-								Title = "Chams Notification",
-								Content = "Created NameTags for newly joined player "..deathplayer.Name..".",
-								Duration = 10
-							})
+							--Rayfield:Notify({
+							--	Title = "Chams Notification",
+							--	Content = "Created NameTags for newly joined player "..deathplayer.Name..".",
+							--	Duration = 10
+							--})
 						end
 
 						if NameTag == nil then
