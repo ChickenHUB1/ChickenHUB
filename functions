@@ -247,7 +247,7 @@ function f.game142823291(Window, Rayfield)
 						local ESPHighlight: Highlight = nil
 						local NameTag: BillboardGui, NameLabel: TextLabel = nil, nil
 						
-						local JoinChar = jointarget and jointarget.Character or jointarget.CharacterAdded:Wait()
+						local JoinChar = jointarget.Character or jointarget.CharacterAdded:Wait()
 
 						task.wait(5)
 
