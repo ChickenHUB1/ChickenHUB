@@ -148,6 +148,7 @@ function f.game142823291(Window, Rayfield)
 			
 			for _,target in pairs(game.Players:GetPlayers()) do
 				local Char = target and target.Character
+				local Head = Char and Char:FindFirstChild("Head")
 
 				if Char then
 					local ESPHighlight: Highlight = nil
@@ -180,8 +181,8 @@ function f.game142823291(Window, Rayfield)
 					end
 					
 					if NameTag == nil then
-						if Char:FindFirstChild("Head"):FindFirstChild("NameTag") then
-							NameTag = Char:FindFirstChild("Head"):FindFirstChild("NameTag")
+						if Head:FindFirstChild("NameTag") then
+							NameTag = Head:FindFirstChild("NameTag")
 						end
 					end
 					if NameLabel == nil then
@@ -325,14 +326,16 @@ function f.game142823291(Window, Rayfield)
 							NameTag:Destroy()
 						end
 
-						if ESPHighlight and (target.Backpack:FindFirstChild("Knife") or char2:FindFirstChild("Knife")) then
-							ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
-						elseif ESPHighlight and target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
-							ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
-						elseif ESPHighlight then
-							ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
-						else
-							warn("Error while assigning color to the Highlights")
+						while ESPActivated == true and task.wait(1) do
+							if ESPHighlight and (target.Backpack:FindFirstChild("Knife") or char2:FindFirstChild("Knife")) then
+								ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
+							elseif ESPHighlight and target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
+								ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
+							elseif ESPHighlight then
+								ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
+							else
+								warn("Error while assigning color to the Highlights")
+							end
 						end
 					end)
 				end
