@@ -787,7 +787,7 @@ function f:LoadExtra(Window, Rayfield)
 	
 	local Date12_24_24 = ChangelogTab:CreateParagraph({
 		Title = "Update - 12/24/24",
-		Content = "'Murder Mystery 2' kill murderer is finished, some tweaks in future. Adding / completing the auto farm coins. Also finished role chams. (hopefully)"
+		Content = "'Murder Mystery 2' kill murderer is finished, some tweaks in future. Adding / completing the auto farm coins. Also finished role chams. (hopefully) Added whitelisted games tab so users can see the correct games that are whitelisted."
 	})
 	local Date12_21_24 = ChangelogTab:CreateParagraph({
 		Title = "Update - 12/21/24",
@@ -838,13 +838,15 @@ function f:LoadExtra(Window, Rayfield)
 		local GameInformation = MPS:GetProductInfo(gameplaceid)
 		
 		if GameInformation then
-			local GameTeleportButton = WhitelistedGamesTab:CreateButton({
-				Name = GameInformation.Name,
-				
-				Callback = function()
-					game:GetService("TeleportService"):Teleport(GameInformation.AssetId, game.Players.LocalPlayer)
-				end,
-			})
+			if GameInformation.AssetId ~= game.PlaceId then
+				local GameTeleportButton = WhitelistedGamesTab:CreateButton({
+					Name = GameInformation.Name,
+
+					Callback = function()
+						game:GetService("TeleportService"):Teleport(GameInformation.AssetId, game.Players.LocalPlayer)
+					end,
+				})
+			end
 		end
 	end
 end
