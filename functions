@@ -125,7 +125,7 @@ function f.game18180213499(Window, Rayfield)
 			local character = player.Character
 
 			if player and character then
-				character:FindFirstChild("Size").Value = 2^9999
+				character:FindFirstChild("Size").Value = 2^99
 			end
 		end,
 	})
