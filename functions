@@ -132,14 +132,15 @@ function f.game18180213499(Window, Rayfield)
 end
 
 function f.game142823291(Window, Rayfield)
+	print("Loading...")
+
 	local Tab = Window:CreateTab("Murder Mystery 2", nil)
 	local MurderSection = Tab:CreateSection("Murderer")
 
 	local KillMurdererCooldown = false
 	local ESPActivated = false
 	local CoinAutoFarm = false
-	
-	local DeathConnections = {}
+
 	local JoinConnection = nil
 	local LPCharConnection: RBXScriptConnection
 
