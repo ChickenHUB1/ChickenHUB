@@ -1,7 +1,7 @@
 --local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 local Version = loadstring(game:HttpGet('https://raw.githubusercontent.com/ChickenHUB1/ChickenHUB/refs/heads/main/Version'))()
 local WhitelistedGamesTable = loadstring(game:HttpGet('https://raw.githubusercontent.com/ChickenHUB1/ChickenHUB/refs/heads/main/whitelistedplaceids'))()
-print("Loading...")
+
 local VersionCheckCooldown = false
 
 local f = {}
@@ -132,8 +132,6 @@ function f.game18180213499(Window, Rayfield)
 end
 
 function f.game142823291(Window, Rayfield)
-	print("Loading...")
-
 	local Tab = Window:CreateTab("Murder Mystery 2", nil)
 	local MurderSection = Tab:CreateSection("Murderer")
 
@@ -207,8 +205,8 @@ function f.game142823291(Window, Rayfield)
 							task.wait(5)
 
 							NewHightlight(char)
-						end
-					end
+						end)
+					end)
 				end
 			end
 		end
