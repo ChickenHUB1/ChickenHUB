@@ -162,7 +162,7 @@ function f.game142823291(Window, Rayfield)
 
 			NameLabel = Instance.new("TextLabel")
 			NameLabel.Size = UDim2.fromScale(1, 1)
-			NameLabel.Text = target.Name
+			NameLabel.Text = Character.Name
 			NameLabel.TextScaled = true
 			NameLabel.BackgroundTransparency = 1
 			NameLabel.Font = Enum.Font.Arial
@@ -185,7 +185,7 @@ function f.game142823291(Window, Rayfield)
 				local Head = Char and Char:FindFirstChild("Head")
 
 				if Char then
-					local ESPHightlight: Highlight, NameTag = NewHightlight(Char)
+					local ESPHighlight: Highlight, NameTag = NewHighlight(Char)
 
 					if ESPHighlight and NameTag and target == game.Players.LocalPlayer then
 						ESPHighlight:Destroy()
