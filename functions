@@ -147,7 +147,8 @@ function f.game142823291(Window, Rayfield)
 		if Character and not Character:FindFirstChild("ESPHighlight") then
 			ESPHighlight = Instance.new("Highlight")
 			ESPHighlight.Name = "ESPHighlight"
-			ESPHighlight.OutlineColor = Color3.fromRGB(80, 80, 80)
+			ESPHighlight.OutlineColor = Color3.fromRGB(0, 0, 0)
+			ESPHighlight.FillColor = Color3.fromRGB(80, 80, 80)
 			ESPHighlight.Parent = Character
 		end
 
@@ -203,7 +204,7 @@ function f.game142823291(Window, Rayfield)
 						player.CharacterAdded:Connect(function(char)
 							task.wait(5)
 
-							NewHightlight(char)
+							NewHighlight(char)
 						end)
 					end)
 				end
