@@ -1,7 +1,7 @@
 --local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 local Version = loadstring(game:HttpGet('https://raw.githubusercontent.com/ChickenHUB1/ChickenHUB/refs/heads/main/Version'))()
 local WhitelistedGamesTable = loadstring(game:HttpGet('https://raw.githubusercontent.com/ChickenHUB1/ChickenHUB/refs/heads/main/whitelistedplaceids'))()
-
+print("Loading...")
 local VersionCheckCooldown = false
 
 local f = {}
