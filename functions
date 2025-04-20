@@ -140,7 +140,6 @@ function f.game142823291(Window, Rayfield)
 	local CoinAutoFarm = false
 
 	local JoinConnection = nil
-	local LPCharConnection: RBXScriptConnection
 
 	local function NewHighlight(Character: Model)
 		if not Character then return warn("No character provided") end
@@ -148,7 +147,7 @@ function f.game142823291(Window, Rayfield)
 		if Character and not Character:FindFirstChild("ESPHighlight") then
 			ESPHighlight = Instance.new("Highlight")
 			ESPHighlight.Name = "ESPHighlight"
-			ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
+			ESPHighlight.OutlineColor = Color3.fromRGB(80, 80, 80)
 			ESPHighlight.Parent = Character
 		end
 
@@ -184,7 +183,7 @@ function f.game142823291(Window, Rayfield)
 				local Char = target and target.Character
 				local Head = Char and Char:FindFirstChild("Head")
 
-				if Char then
+				if Char and target ~= game.Players.LocalPlayer then
 					local ESPHighlight: Highlight, NameTag = NewHighlight(Char)
 
 					if ESPHighlight and NameTag and target == game.Players.LocalPlayer then
@@ -212,7 +211,7 @@ function f.game142823291(Window, Rayfield)
 		end
 	end
 	local function RemoveHighlights()
-		JoinConnection:Disconnect()
+		if JoinConnection then JoinConnection:Disconnect() end
 		
 		for _,target in pairs(game.Players:GetPlayers()) do
 			local Char = target and target.Character
@@ -291,7 +290,7 @@ function f.game142823291(Window, Rayfield)
 		Callback = function(Value)
 			f:CheckVersion(Rayfield)
 			
-			ESPActivated = not ESPActivated
+			ESPActivated = Value
 			
 			if ESPActivated then
 				task.spawn(CreateHighlights)
@@ -365,6 +364,10 @@ function f.game142823291(Window, Rayfield)
 				local Thrust2 = Instance.new("BodyThrust")
 				Thrust2.Parent = Character:FindFirstChild("HumanoidRootPart")
 				Thrust2.Force = Vector3.new(500,0,500)
+
+				if Character.Humanoid then Character.Humanoid.Health = 0 end
+
+				task.wait(5)
 
 				Rayfield:Notify({
 					Title = "Notification",
