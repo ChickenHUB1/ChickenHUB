@@ -136,7 +136,7 @@ function f.game142823291(Window, Rayfield)
 	local MurderSection = Tab:CreateSection("Murderer")
 
 	local KillMurdererCooldown = false
-	local ESPActivated = false
+	local ESPActivated = nil
 	local CoinAutoFarm = false
 
 	local JoinConnection = nil
