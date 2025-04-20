@@ -140,8 +140,40 @@ function f.game142823291(Window, Rayfield)
 	local CoinAutoFarm = false
 	
 	local DeathConnections = {}
-	local JoinConnections = {}
+	local JoinConnection = nil
 	local LPCharConnection: RBXScriptConnection
+
+	local function NewHighlight(Character: Model)
+		if not Character then return warn("No character provided") end
+
+		if Character and not Character:FindFirstChild("ESPHighlight") then
+			ESPHighlight = Instance.new("Highlight")
+			ESPHighlight.Name = "ESPHighlight"
+			ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
+			ESPHighlight.Parent = Character
+		end
+
+		if Character and not Character:FindFirstChild("NameTag") then
+			NameTag = Instance.new("BillboardGui")
+			NameTag.Size = UDim2.fromScale(10, 1.75)
+			NameTag.AlwaysOnTop = true
+			NameTag.Name = "NameTag"
+			NameTag.StudsOffsetWorldSpace = Vector3.new(0, 3, 0)
+			NameTag.Parent = Character:FindFirstChild("Head")
+
+			NameLabel = Instance.new("TextLabel")
+			NameLabel.Size = UDim2.fromScale(1, 1)
+			NameLabel.Text = target.Name
+			NameLabel.TextScaled = true
+			NameLabel.BackgroundTransparency = 1
+			NameLabel.Font = Enum.Font.Arial
+			NameLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+			NameLabel.Name = "NameLabel"
+			NameLabel.Parent = NameTag
+		end
+
+		return {Character:FindFirstChild("ESPHighlight"), Character:FindFirstChild("NameTag")}
+	end
 	
 	local function CreateHighlights()
 		while ESPActivated == true and task.wait(1) do
@@ -154,81 +186,7 @@ function f.game142823291(Window, Rayfield)
 				local Head = Char and Char:FindFirstChild("Head")
 
 				if Char then
-					local ESPHighlight: Highlight = nil
-					local NameTag: BillboardGui, NameLabel: TextLabel = nil, nil
-					
-					if Char and not(Char:FindFirstChild("ESPHighlight")) then
-						ESPHighlight = Instance.new("Highlight")
-						ESPHighlight.Name = "ESPHighlight"
-						ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
-						ESPHighlight.Parent = Char
-					end
-					
-					if (Char and Char:FindFirstChild("Head")) and not(Char:FindFirstChild("Head"):FindFirstChild("NameTag")) then
-						NameTag = Instance.new("BillboardGui")
-						NameTag.Size = UDim2.fromScale(10, 1.75)
-						NameTag.AlwaysOnTop = true
-						NameTag.Name = "NameTag"
-						NameTag.StudsOffsetWorldSpace = Vector3.new(0, 3, 0)
-						NameTag.Parent = Char:FindFirstChild("Head")
-
-						NameLabel = Instance.new("TextLabel")
-						NameLabel.Size = UDim2.fromScale(1, 1)
-						NameLabel.Text = target.Name
-						NameLabel.TextScaled = true
-						NameLabel.BackgroundTransparency = 1
-						NameLabel.Font = Enum.Font.Arial
-						NameLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-						NameLabel.Name = "NameLabel"
-						NameLabel.Parent = NameTag
-					end
-					
-					if NameTag == nil then
-						if Head and Head:FindFirstChild("NameTag") then
-							NameTag = Head:FindFirstChild("NameTag")
-						end
-					end
-					if NameLabel == nil then
-						if NameTag and NameTag:FindFirstChild("NameLabel") then
-							NameLabel = NameTag:FindFirstChild("NameLabel")
-						end
-					end
-
-					if ESPHighlight == nil then
-						if Char and Char:FindFirstChild("ESPHighlight") then
-							ESPHighlight = Char:FindFirstChild("ESPHighlight")
-						end
-					end
-					
-					if NameTag == nil then
-						NameTag = Instance.new("BillboardGui")
-						NameTag.Size = UDim2.fromScale(10, 1.75)
-						NameTag.AlwaysOnTop = true
-						NameTag.Name = "NameTag"
-						NameTag.StudsOffsetWorldSpace = Vector3.new(0, 3, 0)
-						NameTag.Parent = Char:FindFirstChild("Head")
-
-						NameLabel = Instance.new("TextLabel")
-						NameLabel.Size = UDim2.fromScale(1, 1)
-						NameLabel.Text = target.Name
-						NameLabel.TextScaled = true
-						NameLabel.BackgroundTransparency = 1
-						NameLabel.Font = Enum.Font.Arial
-						NameLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-						NameLabel.Name = "NameLabel"
-						NameLabel.Parent = NameTag
-					end
-
-					if ESPHighlight == nil then
-						ESPHighlight = Instance.new("Highlight")
-						ESPHighlight.Name = "ESPHighlight"
-						ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
-						ESPHighlight.Parent = Char
-					end
-					
-					--print("NameLabel Status: ", NameLabel)
-					--print("NameTag Status: ", NameTag)
-					--print("ESPHighlight Status: ", ESPHighlight)
+					local ESPHightlight: Highlight, NameTag = NewHightlight(Char)
 
 					if ESPHighlight and NameTag and target == game.Players.LocalPlayer then
 						ESPHighlight:Destroy()
@@ -239,188 +197,23 @@ function f.game142823291(Window, Rayfield)
 						ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
 					elseif ESPHighlight and target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
 						ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
-					elseif ESPHighlight then
-						ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
 					else
-						warn("Error while assigning color to the Highlights")
+						ESPHighlight.FillColor = Color3.fromRGB(80, 80, 80)
 					end
 
-					JoinConnections[#JoinConnections+1] = game.Players.PlayerAdded:Connect(function(jointarget)
-						local ESPHighlight: Highlight = nil
-						local NameTag: BillboardGui, NameLabel: TextLabel = nil, nil
-						
-						local JoinChar = jointarget.Character
+					JoinConnection = game.Players.PlayerAdded:Connect(function(player)
+						player.CharacterAdded:Connect(function(char)
+							task.wait(5)
 
-						task.wait(5)
-
-						if JoinChar and not(JoinChar:FindFirstChild("ESPHighlight")) then
-							ESPHighlight = Instance.new("Highlight")
-							ESPHighlight.Name = "ESPHighlight"
-							ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
-							ESPHighlight.Parent = JoinChar or jointarget.Character
-							
-							--Rayfield:Notify({
-							--	Title = "Chams Notification",
-							--	Content = "Created highlight for newly joined player "..jointarget.Name..".",
-							--	Duration = 10
-							--})
+							NewHightlight(char)
 						end
-
-						if (JoinChar and JoinChar:FindFirstChild("Head")) and not(JoinChar:FindFirstChild("Head"):FindFirstChild("NameTag")) then
-							NameTag = Instance.new("BillboardGui")
-							NameTag.Size = UDim2.fromScale(10, 1.75)
-							NameTag.AlwaysOnTop = true
-							NameTag.Name = "NameTag"
-							NameTag.StudsOffsetWorldSpace = Vector3.new(0, 3, 0)
-							NameTag.Parent = JoinChar:FindFirstChild("Head")
-
-							NameLabel = Instance.new("TextLabel")
-							NameLabel.Size = UDim2.fromScale(1, 1)
-							NameLabel.Text = target.Name
-							NameLabel.TextScaled = true
-							NameLabel.BackgroundTransparency = 1
-							NameLabel.Font = Enum.Font.Arial
-							NameLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-							NameLabel.Name = "NameLabel"
-							NameLabel.Parent = NameTag
-							
-							--Rayfield:Notify({
-							--	Title = "Chams Notification",
-							--	Content = "Created NameTags for newly joined player "..jointarget.Name..".",
-							--	Duration = 10
-							--})
-						end
-
-						--print("NameLabel Status: ", NameLabel)
-						--print("NameTag Status: ", NameTag)
-						--print("ESPHighlight Status: ", ESPHighlight)
-
-						--if ESPHighlight and NameTag and target == game.Players.LocalPlayer then
-						--	ESPHighlight:Destroy()
-						--	NameTag:Destroy()
-						--end
-					end)
-					DeathConnections[#DeathConnections+1] = target.CharacterAdded:Connect(function(char2)
-						local ESPHighlight: Highlight = nil
-						local NameTag: BillboardGui, NameLabel: TextLabel = nil, nil
-						
-						local deathplayer = game.Players:GetPlayerFromCharacter(char2)
-
-						task.wait(5)
-
-						if char2 and not(char2:FindFirstChild("ESPHighlight")) then
-							ESPHighlight = Instance.new("Highlight")
-							ESPHighlight.Name = "ESPHighlight"
-							ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
-							ESPHighlight.Parent = char2
-							
-							--Rayfield:Notify({
-							--	Title = "Chams Notification",
-							--	Content = "Created highlight for newly joined player "..deathplayer.Name..".",
-							--	Duration = 10
-							--})
-						end
-
-						if (char2 and char2:FindFirstChild("Head")) and not(char2:FindFirstChild("Head"):FindFirstChild("NameTag")) then
-							NameTag = Instance.new("BillboardGui")
-							NameTag.Size = UDim2.fromScale(10, 1.75)
-							NameTag.AlwaysOnTop = true
-							NameTag.Name = "NameTag"
-							NameTag.StudsOffsetWorldSpace = Vector3.new(0, 3, 0)
-							NameTag.Parent = char2:FindFirstChild("Head")
-
-							NameLabel = Instance.new("TextLabel")
-							NameLabel.Size = UDim2.fromScale(1, 1)
-							NameLabel.Text = target.Name
-							NameLabel.TextScaled = true
-							NameLabel.BackgroundTransparency = 1
-							NameLabel.Font = Enum.Font.Arial
-							NameLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-							NameLabel.Name = "NameLabel"
-							NameLabel.Parent = NameTag
-							
-							--Rayfield:Notify({
-							--	Title = "Chams Notification",
-							--	Content = "Created NameTags for newly joined player "..deathplayer.Name..".",
-							--	Duration = 10
-							--})
-						end
-
-						if NameTag == nil then
-							if char2 and char2:FindFirstChild("Head") and char2:FindFirstChild("Head"):FindFirstChild("NameTag") then
-								NameTag = char2:FindFirstChild("Head"):FindFirstChild("NameTag")
-							end
-						end
-						if NameLabel == nil then
-							if NameTag and NameTag:FindFirstChild("NameLabel") then
-								NameLabel = NameTag:FindFirstChild("NameLabel")
-							end
-						end
-
-						if ESPHighlight == nil then
-							if char2 and char2:FindFirstChild("ESPHighlight") then
-								ESPHighlight = char2:FindFirstChild("ESPHighlight")
-							end
-						end
-
-						if NameTag == nil then
-							NameTag = Instance.new("BillboardGui")
-							NameTag.Size = UDim2.fromScale(10, 1.75)
-							NameTag.AlwaysOnTop = true
-							NameTag.Name = "NameTag"
-							NameTag.StudsOffsetWorldSpace = Vector3.new(0, 3, 0)
-							NameTag.Parent = char2:FindFirstChild("Head")
-
-							NameLabel = Instance.new("TextLabel")
-							NameLabel.Size = UDim2.fromScale(1, 1)
-							NameLabel.Text = target.Name
-							NameLabel.TextScaled = true
-							NameLabel.BackgroundTransparency = 1
-							NameLabel.Font = Enum.Font.Arial
-							NameLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-							NameLabel.Name = "NameLabel"
-							NameLabel.Parent = NameTag
-						end
-
-						if ESPHighlight == nil then
-							ESPHighlight = Instance.new("Highlight")
-							ESPHighlight.Name = "ESPHighlight"
-							ESPHighlight.OutlineColor = Color3.fromRGB(255, 255, 255)
-							ESPHighlight.Parent = char2
-						end
-
-						--print("NameLabel Status: ", NameLabel)
-						--print("NameTag Status: ", NameTag)
-						--print("ESPHighlight Status: ", ESPHighlight)
-
-						if ESPHighlight and NameTag and target == game.Players.LocalPlayer then
-							ESPHighlight:Destroy()
-							NameTag:Destroy()
-						end
-
-						while ESPActivated == true and task.wait(1) do
-							if char2 and deathplayer then
-								if ESPHighlight and (deathplayer.Backpack:FindFirstChild("Knife") or char2:FindFirstChild("Knife")) then
-									ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
-								elseif ESPHighlight and deathplayer.Backpack:FindFirstChild("Gun") or char2:FindFirstChild("Gun") then
-									ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
-								elseif ESPHighlight then
-									ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
-								else
-									warn("Error while assigning color to the Highlights")
-								end
-							else
-								print("Players character wasn't found, retrying...")
-							end
-						end
-					end)
+					end
 				end
 			end
 		end
 	end
 	local function RemoveHighlights()
-		DeathConnections = {}
-		JoinConnections = {}
+		JoinConnection:Disconnect()
 		
 		for _,target in pairs(game.Players:GetPlayers()) do
 			local Char = target and target.Character
@@ -499,7 +292,7 @@ function f.game142823291(Window, Rayfield)
 		Callback = function(Value)
 			f:CheckVersion(Rayfield)
 			
-			ESPActivated = Value
+			ESPActivated = not ESPActivated
 			
 			if ESPActivated then
 				task.spawn(CreateHighlights)
@@ -574,6 +367,12 @@ function f.game142823291(Window, Rayfield)
 				Thrust2.Parent = Character:FindFirstChild("HumanoidRootPart")
 				Thrust2.Force = Vector3.new(500,0,500)
 
+				Rayfield:Notify({
+					Title = "Notification",
+					Content = "Now targeting "..Murderer.Name.."...",
+					Duration = 2.5
+				})
+
 				for _,tplayer in pairs(game.Players:GetPlayers()) do
 					if tplayer and tplayer.Character then
 						local KnifeChar = tplayer.Character:FindFirstChild("Knife")
@@ -587,7 +386,7 @@ function f.game142823291(Window, Rayfield)
 					end
 				end
 				
-				if Murderer == game.Players.LocalPlayer then
+				if Murderer.Name == game.Players.LocalPlayer.Name then
 					Rayfield:Notify({
 						Title = "Notification",
 						Content = "Can't target yourself.",
@@ -606,12 +405,6 @@ function f.game142823291(Window, Rayfield)
 					Thrust2:Destroy()
 					return
 				end
-
-				Rayfield:Notify({
-					Title = "Notification",
-					Content = "Now targeting "..Murderer.Name.."...",
-					Duration = 2.5
-				})
 				
 				workspace.CurrentCamera.CameraSubject = Murderer.Character:FindFirstChildOfClass("Humanoid")
 
@@ -785,6 +578,10 @@ function f:LoadExtra(Window, Rayfield)
 	local ExtraTab = Window:CreateTab("Extra", nil)
 	local WhitelistedGamesTab = Window:CreateTab("Whitelisted Games", nil)
 	
+	local Date4_20_25 = ChangelogTab:CreateParagraph({
+		Title = "Update - 4/20/25",
+		Content = "It's been a bit since the last update, executors are back to working and my motivation for this project is higher now as it's just something I do when I'm bored. Anyways, update to 'Murder Mystery 2' script. Revamped ESP role highlight."
+	})
 	local Date12_24_24 = ChangelogTab:CreateParagraph({
 		Title = "Update - 12/24/24",
 		Content = "'Murder Mystery 2' kill murderer is finished, some tweaks in future. Adding / completing the auto farm coins. Also finished role chams. (hopefully) Added whitelisted games tab so users can see the correct games that are whitelisted."
