@@ -196,6 +196,8 @@ function f.game142823291(Window, Rayfield)
 						ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
 					elseif ESPHighlight and target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
 						ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
+					elseif ESPHighlight and Char:GetAttribute("Alive") then
+						ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
 					else
 						ESPHighlight.FillColor = Color3.fromRGB(80, 80, 80)
 					end
