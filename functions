@@ -293,7 +293,7 @@ function f.game142823291(Window, Rayfield)
 			
 			ESPActivated = Value
 			
-			if ESPActivated then
+			if Value then
 				task.spawn(CreateHighlights)
 			else
 				task.spawn(RemoveHighlights)
@@ -370,12 +370,6 @@ function f.game142823291(Window, Rayfield)
 
 				task.wait(5)
 
-				Rayfield:Notify({
-					Title = "Notification",
-					Content = "Now targeting "..Murderer.Name.."...",
-					Duration = 2.5
-				})
-
 				for _,tplayer in pairs(game.Players:GetPlayers()) do
 					if tplayer and tplayer.Character then
 						local KnifeChar = tplayer.Character:FindFirstChild("Knife")
@@ -388,6 +382,12 @@ function f.game142823291(Window, Rayfield)
 						end
 					end
 				end
+
+				Rayfield:Notify({
+					Title = "Notification",
+					Content = "Now targeting "..Murderer.Name.."...",
+					Duration = 2.5
+				})
 				
 				if Murderer.Name == game.Players.LocalPlayer.Name then
 					Rayfield:Notify({
