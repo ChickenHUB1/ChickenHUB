@@ -144,6 +144,7 @@ function f.game142823291(Window, Rayfield)
 
 	local function NewHighlight(Character: Model, target: Player)
 		if not Character then return warn("No character provided") end
+		if not target then return end
 		if target == game.Players.LocalPlayer then return end
 
 		if Character and not Character:FindFirstChild("ESPHighlight") then
