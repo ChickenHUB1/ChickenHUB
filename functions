@@ -142,7 +142,7 @@ function f.game142823291(Window, Rayfield)
 	local JoinConnection = nil
 	local DeathConnections = {}
 
-	local function NewHighlight(Character: Model)
+	local function NewHighlight(Character: Model, target: Player)
 		if not Character then return warn("No character provided") end
 
 		if Character and not Character:FindFirstChild("ESPHighlight") then
@@ -172,6 +172,14 @@ function f.game142823291(Window, Rayfield)
 			NameLabel.Parent = NameTag
 		end
 
+		if ESPHighlight and (target.Backpack:FindFirstChild("Knife") or Char:FindFirstChild("Knife")) then
+			ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
+		elseif ESPHighlight and target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
+			ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
+		else
+            ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
+		end
+
 		return {Character:FindFirstChild("ESPHighlight"), Character:FindFirstChild("NameTag")}
 	end
 	
@@ -186,7 +194,7 @@ function f.game142823291(Window, Rayfield)
 				local Head = Char and Char:FindFirstChild("Head")
 
 				if Char and target ~= game.Players.LocalPlayer then
-					local ESPHighlight: Highlight, NameTag = NewHighlight(Char)
+					local ESPHighlight: Highlight, NameTag = NewHighlight(Char, target)
 
 					if ESPHighlight and NameTag and target == game.Players.LocalPlayer then
 						ESPHighlight:Destroy()
@@ -206,14 +214,14 @@ function f.game142823291(Window, Rayfield)
 					DeathConnections[player] = player.CharacterAdded:Connect(function(char)
 						task.wait(5)
 
-						NewHighlight(char)
+						NewHighlight(char, player)
 					end)
 				end)
 
 				DeathConnections[player] = target.CharacterAdded:Connect(function(char)
 					task.wait(5)
 
-					NewHighlight(char)
+					NewHighlight(char, player)
 				end)
 			end
 		end
