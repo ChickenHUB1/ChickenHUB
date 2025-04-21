@@ -144,6 +144,7 @@ function f.game142823291(Window, Rayfield)
 
 	local function NewHighlight(Character: Model, target: Player)
 		if not Character then return warn("No character provided") end
+		if target == game.Players.LocalPlayer then return end
 
 		if Character and not Character:FindFirstChild("ESPHighlight") then
 			ESPHighlight = Instance.new("Highlight")
@@ -151,6 +152,14 @@ function f.game142823291(Window, Rayfield)
 			ESPHighlight.OutlineColor = Color3.fromRGB(0, 0, 0)
 			ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
 			ESPHighlight.Parent = Character
+		else
+			if ESPHighlight and (target.Backpack:FindFirstChild("Knife") or Char:FindFirstChild("Knife")) then
+				ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
+			elseif ESPHighlight and target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
+				ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
+			else
+           		ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
+			end
 		end
 
 		if Character and not Character:FindFirstChild("NameTag") then
@@ -170,14 +179,6 @@ function f.game142823291(Window, Rayfield)
 			NameLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
 			NameLabel.Name = "NameLabel"
 			NameLabel.Parent = NameTag
-		end
-
-		if ESPHighlight and (target.Backpack:FindFirstChild("Knife") or Char:FindFirstChild("Knife")) then
-			ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
-		elseif ESPHighlight and target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
-			ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
-		else
-            ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
 		end
 
 		return {Character:FindFirstChild("ESPHighlight"), Character:FindFirstChild("NameTag")}
