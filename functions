@@ -140,6 +140,7 @@ function f.game142823291(Window, Rayfield)
 	local CoinAutoFarm = false
 
 	local JoinConnection = nil
+	local DeathConnections = {}
 
 	local function NewHighlight(Character: Model)
 		if not Character then return warn("No character provided") end
@@ -199,15 +200,21 @@ function f.game142823291(Window, Rayfield)
 					else
                         ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
 					end
-
-					JoinConnection = game.Players.PlayerAdded:Connect(function(player)
-						player.CharacterAdded:Connect(function(char)
-							task.wait(5)
-
-							NewHighlight(char)
-						end)
-					end)
 				end
+
+				JoinConnection = game.Players.PlayerAdded:Connect(function(player)
+					DeathConnections[player] = player.CharacterAdded:Connect(function(char)
+						task.wait(5)
+
+						NewHighlight(char)
+					end)
+				end)
+
+				DeathConnections[player] = player.CharacterAdded:Connect(function(char)
+					task.wait(5)
+
+					NewHighlight(char)
+				end)
 			end
 		end
 	end
