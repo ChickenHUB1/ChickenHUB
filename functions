@@ -181,7 +181,7 @@ function f.game142823291(Window, Rayfield)
 				break
 			end
 			
-			for _,target in pairs(game.Players:GetPlayers()) do
+			for _, target in pairs(game.Players:GetPlayers()) do
 				local Char = target and target.Character
 				local Head = Char and Char:FindFirstChild("Head")
 
@@ -210,7 +210,7 @@ function f.game142823291(Window, Rayfield)
 					end)
 				end)
 
-				DeathConnections[player] = player.CharacterAdded:Connect(function(char)
+				DeathConnections[player] = target.CharacterAdded:Connect(function(char)
 					task.wait(5)
 
 					NewHighlight(char)
