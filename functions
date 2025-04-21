@@ -148,7 +148,7 @@ function f.game142823291(Window, Rayfield)
 			ESPHighlight = Instance.new("Highlight")
 			ESPHighlight.Name = "ESPHighlight"
 			ESPHighlight.OutlineColor = Color3.fromRGB(0, 0, 0)
-			ESPHighlight.FillColor = Color3.fromRGB(80, 80, 80)
+			ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
 			ESPHighlight.Parent = Character
 		end
 
@@ -196,10 +196,8 @@ function f.game142823291(Window, Rayfield)
 						ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
 					elseif ESPHighlight and target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
 						ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
-					elseif ESPHighlight and Char:GetAttribute("Alive") then
-						ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
 					else
-						ESPHighlight.FillColor = Color3.fromRGB(80, 80, 80)
+                        ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
 					end
 
 					JoinConnection = game.Players.PlayerAdded:Connect(function(player)
@@ -367,10 +365,6 @@ function f.game142823291(Window, Rayfield)
 				local Thrust2 = Instance.new("BodyThrust")
 				Thrust2.Parent = Character:FindFirstChild("HumanoidRootPart")
 				Thrust2.Force = Vector3.new(500,0,500)
-
-				if Character.Humanoid then Character.Humanoid.Health = 0 end
-
-				task.wait(5)
 
 				for _,tplayer in pairs(game.Players:GetPlayers()) do
 					if tplayer and tplayer.Character then
