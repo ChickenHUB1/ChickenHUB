@@ -142,7 +142,7 @@ function f.game142823291(Window, Rayfield)
 	local JoinConnection = nil
 	local DeathConnections = {}
 
-	local function NewHighlight(Character: Model, target: Player)
+local function NewHighlight(Character: Model, target: Player)
 		if not Character then return warn("No character provided") end
 		if not target then return end
 		if target == game.Players.LocalPlayer then return end
@@ -155,12 +155,18 @@ function f.game142823291(Window, Rayfield)
 			ESPHighlight.Parent = Character
 		end
 
-        if ESPHighlight and (target.Backpack:FindFirstChild("Knife") or Char:FindFirstChild("Knife")) then
+        if ESPHighlight and target and (target.Backpack:FindFirstChild("Knife") or Char:FindFirstChild("Knife")) then
 			ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
-		elseif ESPHighlight and target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
+		elseif ESPHighlight and target and target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
 			ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
-		else
+		elseif target then
            	ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
+        else
+            Rayfield:Notify({
+				Title = "Notification",
+				Content = "Error while giving "..target.Name.." their ESP cham",
+				Duration = 2.5
+			})
 		end
 
 		if Character and not Character:FindFirstChild("NameTag") then
@@ -227,26 +233,6 @@ function f.game142823291(Window, Rayfield)
 
 					NewHighlight(char, target)
 				end)
-			end
-		end
-	end
-	local function RemoveHighlights()
-		if JoinConnection then JoinConnection:Disconnect() end
-        DeathConnections = {}
-		
-		for _,target in pairs(game.Players:GetPlayers()) do
-			local Char = target and target.Character
-
-			if Char then
-				local Highlight = Char:FindFirstChild("ESPHighlight")
-				local NameTag = Char:FindFirstChild("Head"):FindFirstChild("NameTag")
-				
-				if Highlight then
-					Highlight:Destroy()
-				end
-				if NameTag then
-					NameTag:Destroy()
-				end
 			end
 		end
 	end
