@@ -440,7 +440,7 @@ local function NewHighlight(Character: Model, target: Player)
 					end
 
 					local s, f = pcall(function()
-						-- Character:FindFirstChild("HumanoidRootPart").Velocity = Character:FindFirstChild("HumanoidRootPart").Velocity * 10000
+						Character:FindFirstChild("HumanoidRootPart").Velocity = Character:FindFirstChild("HumanoidRootPart").Velocity * 10000
 						-- task.wait()
 						-- Character:FindFirstChild("HumanoidRootPart").Velocity = 0
 
