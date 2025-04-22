@@ -424,6 +424,8 @@ local function NewHighlight(Character: Model, target: Player)
                     if Thrust then Thrust:Destroy() end
 					if Thrust2 then Thrust2:Destroy() end
 
+					KillMurdererCooldown = false
+
                     return
                 end
 
