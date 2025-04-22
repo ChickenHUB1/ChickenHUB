@@ -198,6 +198,12 @@ local function NewHighlight(Character: Model, target: Player)
 	local function CreateHighlights()
 		if not ESPActivated then return end
 
+		Rayfield:Notify({
+			Title = "Notification",
+			Content = "Creating chams...",
+			Duration = 2.5
+		})
+
 		while ESPActivated and task.wait(1) do
 			if not ESPActivated then
 				break
@@ -258,6 +264,12 @@ local function NewHighlight(Character: Model, target: Player)
 				if NameTag then NameTag:Destroy() end
 			end
 		end
+
+		Rayfield:Notify({
+			Title = "Notification",
+			Content = "Successfully removed chams from all players",
+			Duration = 2.5
+		})
 	end
 	
 	local function AutoFarmCoins()
