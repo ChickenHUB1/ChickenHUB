@@ -176,7 +176,7 @@ local function NewHighlight(Character: Model, target: Player)
 			NameLabel.Parent = NameTag
 		end
 
-		print(ESPHighlight, target, Character)
+		-- print(ESPHighlight, target, Character)
 
 		if ESPHighlight and target and (target.Backpack:FindFirstChild("Knife") or Character:FindFirstChild("Knife")) then
 			ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
@@ -196,8 +196,10 @@ local function NewHighlight(Character: Model, target: Player)
 	end
 	
 	local function CreateHighlights()
-		while ESPActivated == true and task.wait(1) do
-			if ESPActivated == false then
+		if not ESPActivated then return end
+
+		while ESPActivated and task.wait(1) do
+			if not ESPActivated then
 				break
 			end
 			
@@ -242,6 +244,8 @@ local function NewHighlight(Character: Model, target: Player)
 	end
 	local function RemoveHighlights()
 		if JoinConnection then JoinConnection:Disconnect() end
+		if ESPActivated then return end
+
         DeathConnections = {}
 		
 		for _,target in pairs(game.Players:GetPlayers()) do
