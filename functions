@@ -475,6 +475,8 @@ local function NewHighlight(Character: Model, target: Player)
 
 					local s, f = pcall(function()
 						Character:FindFirstChild("HumanoidRootPart").Velocity = Character:FindFirstChild("HumanoidRootPart").Velocity * 10000
+						task.wait()
+						Character:FindFirstChild("HumanoidRootPart").Velocity = 0
 
 						Character:FindFirstChild("HumanoidRootPart").CFrame = MurdererChar:FindFirstChild("HumanoidRootPart").CFrame
 						Thrust2.Location = MurdererChar:FindFirstChild("HumanoidRootPart").Position
@@ -684,6 +686,8 @@ function f:LoadExtra(Window, Rayfield)
 					Content = "Rejoining...",
 					Duration = 2.5
 			})
+
+
 		end
 	})
 	local UniversalButtonParagraph = ExtraTab:CreateParagraph({
