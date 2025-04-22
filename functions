@@ -444,10 +444,10 @@ local function NewHighlight(Character: Model, target: Player)
 
 						Character:FindFirstChild("HumanoidRootPart").CFrame = MurdererChar:FindFirstChild("HumanoidRootPart").CFrame
 						Thrust2.Location = MurdererChar:FindFirstChild("HumanoidRootPart").Position
-						Thrust2.Force = Vector3.new(100, 100, 100) * math.random(1, 10)
+						Thrust2.Force = Vector3.new(100, 100, 100) * math.random(1, 25)
 						Character:FindFirstChildOfClass("Humanoid"):SetStateEnabled(Enum.HumanoidStateType.Seated, true)
 
-						Thrust.AngularVelocity = Vector3.new(0, 100, 0) * math.random(10, 50)
+						Thrust.AngularVelocity = Vector3.new(0, 100, 0) * math.random(5, 25)
 						task.wait()
 						Thrust.AngularVelocity = Vector3.new(0,0,0)
 					end)
