@@ -421,8 +421,8 @@ local function NewHighlight(Character: Model, target: Player)
 				end
 
                 if not Murderer then
-                    Thrust:Destroy()
-                    Thurst2:Destroy()
+                    if Thrust then Thrust:Destroy() end
+					if Thrust2 then Thrust2:Destroy() end
 
                     return
                 end
