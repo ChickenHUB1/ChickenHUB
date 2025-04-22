@@ -195,22 +195,24 @@ function f.game142823291(Window, Rayfield)
 				local Char = target and target.Character
 				local Head = Char and Char:FindFirstChild("Head")
 
-				if Char and target ~= game.Players.LocalPlayer then
-					local ESPHighlight: Highlight, NameTag = NewHighlight(Char, target)
+                NewHighlight(Char, target)
 
-					if ESPHighlight and NameTag and target == game.Players.LocalPlayer then
-						ESPHighlight:Destroy()
-						NameTag:Destroy()
-					end
+				-- if Char and target ~= game.Players.LocalPlayer then
+				-- 	local ESPHighlight: Highlight, NameTag = NewHighlight(Char, target)
 
-					if ESPHighlight and (target.Backpack:FindFirstChild("Knife") or Char:FindFirstChild("Knife")) then
-						ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
-					elseif ESPHighlight and target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
-						ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
-					else
-                        ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
-					end
-				end
+				-- 	if ESPHighlight and NameTag and target == game.Players.LocalPlayer then
+				-- 		ESPHighlight:Destroy()
+				-- 		NameTag:Destroy()
+				-- 	end
+
+				-- 	if ESPHighlight and (target.Backpack:FindFirstChild("Knife") or Char:FindFirstChild("Knife")) then
+				-- 		ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
+				-- 	elseif ESPHighlight and target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
+				-- 		ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
+				-- 	else
+                --         ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
+				-- 	end
+				-- end
 
 				JoinConnection = game.Players.PlayerAdded:Connect(function(player)
 					DeathConnections[player] = player.CharacterAdded:Connect(function(char)
@@ -395,6 +397,13 @@ function f.game142823291(Window, Rayfield)
 						end
 					end
 				end
+
+                if not Murderer then
+                    Thrust:Destroy()
+                    Thurst2:Destroy()
+
+                    return
+                end
 
 				Rayfield:Notify({
 					Title = "Notification",
