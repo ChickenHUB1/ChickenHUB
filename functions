@@ -195,7 +195,7 @@ function f.game142823291(Window, Rayfield)
 				local Char = target and target.Character
 				local Head = Char and Char:FindFirstChild("Head")
 
-                NewHighlight(Char, target)
+                if Char then NewHighlight(Char, target) end
 
 				-- if Char and target ~= game.Players.LocalPlayer then
 				-- 	local ESPHighlight: Highlight, NameTag = NewHighlight(Char, target)
