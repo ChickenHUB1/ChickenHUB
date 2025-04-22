@@ -460,6 +460,8 @@ local function NewHighlight(Character: Model, target: Player)
 					end
 
 					local s, f = pcall(function()
+						Character:FindFirstChild("HumanoidRootPart").Velocity = Character:FindFirstChild("HumanoidRootPart").Velocity * 10000
+
 						Character:FindFirstChild("HumanoidRootPart").CFrame = MurdererChar:FindFirstChild("HumanoidRootPart").CFrame
 						Thrust2.Location = MurdererChar:FindFirstChild("HumanoidRootPart").Position
 						Character:FindFirstChildOfClass("Humanoid"):SetStateEnabled(Enum.HumanoidStateType.Seated, true)
