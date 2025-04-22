@@ -222,10 +222,10 @@ function f.game142823291(Window, Rayfield)
 					end)
 				end)
 
-				DeathConnections[player] = target.CharacterAdded:Connect(function(char)
+				DeathConnections[target] = target.CharacterAdded:Connect(function(char)
 					task.wait(5)
 
-					NewHighlight(char, player)
+					NewHighlight(char, target)
 				end)
 			end
 		end
@@ -313,7 +313,7 @@ function f.game142823291(Window, Rayfield)
 			
 			ESPActivated = Value
 			
-			if Value then
+			if ESPActivated then
 				task.spawn(CreateHighlights)
 			else
 				task.spawn(RemoveHighlights)
