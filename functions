@@ -254,8 +254,8 @@ local function NewHighlight(Character: Model, target: Player)
 			if Char then
 				local Highlight, NameTag = NewHighlight(Char, target)
 
-				Highlight:Destroy()
-				NameTag:Destroy()
+				if Highlight then Highlight:Destroy() end
+				if NameTag then NameTag:Destroy() end
 			end
 		end
 	end
