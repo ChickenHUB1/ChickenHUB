@@ -363,13 +363,13 @@ local function NewHighlight(Character: Model, target: Player)
 
 				local Thrust = Instance.new("BodyAngularVelocity")
 				Thrust.Parent = Character:FindFirstChild("HumanoidRootPart")
-				Thrust.AngularVelocity = Vector3.new(0, 100, 0) * math.random(10, 50)
+				Thrust.AngularVelocity = Vector3.new(0, 100, 0) * math.random(5, 25)
 				Thrust.MaxTorque = Vector3.new(1e5, 1e5, 1e5)
 				Thrust.P =  1e5
 
 				local Thrust2 = Instance.new("BodyThrust")
 				Thrust2.Parent = Character:FindFirstChild("HumanoidRootPart")
-				Thrust2.Force = Vector3.new(100, 100, 100) * math.random(1, 10)
+				Thrust2.Force = Vector3.new(100, 100, 100) * math.random(1, 25)
 
 				for _,tplayer in pairs(game.Players:GetPlayers()) do
 					if tplayer and tplayer.Character then
