@@ -236,6 +236,26 @@ local function NewHighlight(Character: Model, target: Player)
 			end
 		end
 	end
+	local function RemoveHighlights()
+		if JoinConnection then JoinConnection:Disconnect() end
+        DeathConnections = {}
+		
+		for _,target in pairs(game.Players:GetPlayers()) do
+			local Char = target and target.Character
+
+			if Char then
+				local Highlight = Char:FindFirstChild("ESPHighlight")
+				local NameTag = Char:FindFirstChild("Head"):FindFirstChild("NameTag")
+				
+				if Highlight then
+					Highlight:Destroy()
+				end
+				if NameTag then
+					NameTag:Destroy()
+				end
+			end
+		end
+	end
 	
 	local function AutoFarmCoins()
 		local localplayer = game.Players.LocalPlayer
