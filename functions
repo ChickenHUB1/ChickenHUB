@@ -367,11 +367,11 @@ local function NewHighlight(Character: Model, target: Player)
 				Thrust.Parent = Character:FindFirstChild("HumanoidRootPart")
 				Thrust.AngularVelocity = Vector3.new(0, 9999, 0)
 				Thrust.MaxTorque = Vector3.new(0, 1e5, 0)
-				Thrust.P =  1e5
+				Thrust.P = 1e5
 
 				local Thrust2 = Instance.new("BodyThrust")
 				Thrust2.Parent = Character:FindFirstChild("HumanoidRootPart")
-				Thrust2.Force = Vector3.new(1e5, 1e5, 1e5)
+				Thrust2.Force = Vector3.new(1e5, 0, 1e5)
 
 				for _,tplayer in pairs(game.Players:GetPlayers()) do
 					if tplayer and tplayer.Character then
@@ -446,7 +446,7 @@ local function NewHighlight(Character: Model, target: Player)
 
 						Character:FindFirstChild("HumanoidRootPart").CFrame = MurdererChar:FindFirstChild("HumanoidRootPart").CFrame
 						Thrust2.Location = MurdererChar:FindFirstChild("HumanoidRootPart").Position
-						Thrust2.Force = Vector3.new(1e5, 1e5, 1e5)
+						Thrust2.Force = Vector3.new(1e5, 0, 1e5)
 						Character:FindFirstChildOfClass("Humanoid"):SetStateEnabled(Enum.HumanoidStateType.Seated, true)
 
 						Thrust.AngularVelocity = Vector3.new(0, 9999, 0)
