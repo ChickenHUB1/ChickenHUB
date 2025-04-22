@@ -232,6 +232,7 @@ function f.game142823291(Window, Rayfield)
 	end
 	local function RemoveHighlights()
 		if JoinConnection then JoinConnection:Disconnect() end
+        DeathConnections = {}
 		
 		for _,target in pairs(game.Players:GetPlayers()) do
 			local Char = target and target.Character
