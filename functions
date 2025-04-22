@@ -300,9 +300,9 @@ local function NewHighlight(Character: Model, target: Player)
 			ESPActivated = Value
 			
 			if ESPActivated then
-				task.spawn(CreateHighlights)
+				CreateHighlights()
 			else
-				task.spawn(RemoveHighlights)
+				RemoveHighlights()
 			end
 		end,
 	})
