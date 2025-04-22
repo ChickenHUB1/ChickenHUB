@@ -176,6 +176,8 @@ local function NewHighlight(Character: Model, target: Player)
 			NameLabel.Parent = NameTag
 		end
 
+		print(ESPHighlight, target, Character)
+
 		if ESPHighlight and target and (target.Backpack:FindFirstChild("Knife") or Char:FindFirstChild("Knife")) then
 			ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
 		elseif ESPHighlight and target and target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
