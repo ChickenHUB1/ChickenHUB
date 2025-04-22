@@ -147,7 +147,7 @@ local function NewHighlight(Character: Model, target: Player)
 		if not target then return end
 		if target == game.Players.LocalPlayer then return end
 
-		local ESPHighlight = nil
+		local ESPHighlight = Character:FindFirstChild("ESPHighlight")
 
 		if Character and not Character:FindFirstChild("ESPHighlight") then
 			ESPHighlight = Instance.new("Highlight")
