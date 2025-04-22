@@ -143,6 +143,7 @@ function f.game142823291(Window, Rayfield)
 	local DeathConnections = {}
 
 local function NewHighlight(Character: Model, target: Player)
+		if not ESPActivated then return end
 		if not Character then return warn("No character provided") end
 		if not target then return end
 		if target == game.Players.LocalPlayer then return end
