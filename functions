@@ -233,19 +233,19 @@ local function NewHighlight(Character: Model, target: Player)
 				-- 	end
 				-- end
 
-				JoinConnection = game.Players.PlayerAdded:Connect(function(player)
-					DeathConnections[player] = player.CharacterAdded:Connect(function(char)
-						task.wait(5)
+				-- JoinConnection = game.Players.PlayerAdded:Connect(function(player)
+				-- 	DeathConnections[player] = player.CharacterAdded:Connect(function(char)
+				-- 		task.wait(5)
 
-						NewHighlight(char, player)
-					end)
-				end)
+				-- 		NewHighlight(char, player)
+				-- 	end)
+				-- end)
 
-				DeathConnections[target] = target.CharacterAdded:Connect(function(char)
-					task.wait(5)
+				-- DeathConnections[target] = target.CharacterAdded:Connect(function(char)
+				-- 	task.wait(5)
 
-					NewHighlight(char, target)
-				end)
+				-- 	NewHighlight(char, target)
+				-- end)
 			end
 		end
 	end
