@@ -429,7 +429,7 @@ local function NewHighlight(Character: Model, target: Player)
 					--break
 					--end
 					
-					if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Health <= 0 then
+					if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") and game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Health <= 0 then
 						break
 					end
 
@@ -596,6 +596,10 @@ function f:LoadExtra(Window, Rayfield)
 	local ExtraTab = Window:CreateTab("Extra", nil)
 	local WhitelistedGamesTab = Window:CreateTab("Whitelisted Games", nil)
 	
+	local Date4_22_25 = ChangelogTab:CreateParagraph({
+		Title = "Update - 4/22/25",
+		Content = "Completely finished role chams, just gotta actually make it turn off when you turn them off, but now I am working on a better murderer kill. (fling)"
+	})
 	local Date4_20_25 = ChangelogTab:CreateParagraph({
 		Title = "Update - 4/20/25",
 		Content = "It's been a bit since the last update, executors are back to working and my motivation for this project is higher now as it's just something I do when I'm bored. Anyways, update to 'Murder Mystery 2' script. Revamped ESP role highlight."
@@ -725,4 +729,4 @@ function f:RunFunction(placeid, Window, Rayfield)
 	f:LoadExtra(Window, Rayfield)
 end
 
-return f
+return f	
