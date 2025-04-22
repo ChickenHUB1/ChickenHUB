@@ -192,7 +192,7 @@ local function NewHighlight(Character: Model, target: Player)
 			})
 		end
 
-		return {Character:FindFirstChild("ESPHighlight"), Character:FindFirstChild("NameTag")}
+		return Character:FindFirstChild("ESPHighlight"), Character:FindFirstChild("NameTag")
 	end
 	
 	local function CreateHighlights()
@@ -248,19 +248,14 @@ local function NewHighlight(Character: Model, target: Player)
 
         DeathConnections = {}
 		
-		for _,target in pairs(game.Players:GetPlayers()) do
+		for _, target in pairs(game.Players:GetPlayers()) do
 			local Char = target and target.Character
 
 			if Char then
-				local Highlight = Char:FindFirstChild("ESPHighlight")
-				local NameTag = Char:FindFirstChild("Head"):FindFirstChild("NameTag")
-				
-				if Highlight then
-					Highlight:Destroy()
-				end
-				if NameTag then
-					NameTag:Destroy()
-				end
+				local Highlight, NameTag = NewHighlight(Char, target)
+
+				Highlight:Destroy()
+				NameTag:Destroy()
 			end
 		end
 	end
