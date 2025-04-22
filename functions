@@ -658,6 +658,8 @@ function f:LoadExtra(Window, Rayfield)
 					Duration = 2.5
 			})
 
+			task.wait(1.5)
+
 			local TPS = game:GetService("TeleportService")
 
 			TPS:TeleportToPlaceInstance(game.PlaceId, game.JobId, game.Players.LocalPlayer)
