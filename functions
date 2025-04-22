@@ -178,9 +178,9 @@ local function NewHighlight(Character: Model, target: Player)
 
 		print(ESPHighlight, target, Character)
 
-		if ESPHighlight and target and (target.Backpack:FindFirstChild("Knife") or Char:FindFirstChild("Knife")) then
+		if ESPHighlight and target and (target.Backpack:FindFirstChild("Knife") or Character:FindFirstChild("Knife")) then
 			ESPHighlight.FillColor = Color3.fromRGB(255, 0, 0)
-		elseif ESPHighlight and target and target.Backpack:FindFirstChild("Gun") or target.Character:FindFirstChild("Gun") then
+		elseif ESPHighlight and target and target.Backpack:FindFirstChild("Gun") or Character:FindFirstChild("Gun") then
 			ESPHighlight.FillColor = Color3.fromRGB(0, 0, 255)
 		elseif target then
            	ESPHighlight.FillColor = Color3.fromRGB(0, 255, 0)
@@ -659,6 +659,17 @@ function f:LoadExtra(Window, Rayfield)
 				})
 			end
 		end,
+	})
+	local RejoinButton = ExtraTab:CreateButton({
+		Name = "Rejoin",
+
+		Callback = function()
+			Rayfield:Notify({
+					Title = "Notification",
+					Content = "Rejoining...",
+					Duration = 2.5
+			})
+		end
 	})
 	local UniversalButtonParagraph = ExtraTab:CreateParagraph({
 		Title = "⚠WARNING⚠",
