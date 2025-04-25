@@ -449,9 +449,9 @@ local function NewHighlight(Character: Model, target: Player)
 						Character:FindFirstChild("HumanoidRootPart").Velocity = Vector3.new(9e7, (9e7 * 10), 9e7)
 						Character:FindFirstChild("HumanoidRootPart").RotVelocity = Vector3.new(9e8, 9e8, 9e8)
 
-						for _, mpart in pairs(MurdererChar:GetChildren()) do
-							mpart.CanCollide = false
-						end
+						-- for _, mpart in pairs(MurdererChar:GetChildren()) do
+						-- 	mpart.CanCollide = false
+						-- end
 
 						-- task.wait()
 						-- Character:FindFirstChild("HumanoidRootPart").Velocity = 0
