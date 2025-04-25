@@ -390,6 +390,12 @@ local function NewHighlight(Character: Model, target: Player)
                     -- if Thrust then Thrust:Destroy() end
 					-- if Thrust2 then Thrust2:Destroy() end
 
+					Rayfield:Notify({
+						Title = "Notification",
+						Content = "No murderer found",
+						Duration = 2.5
+					})
+
 					KillMurdererCooldown = false
 
                     return
@@ -423,7 +429,7 @@ local function NewHighlight(Character: Model, target: Player)
 				
 				workspace.CurrentCamera.CameraSubject = Murderer.Character:FindFirstChildOfClass("Humanoid")
 
-				while task.wait() do
+				while task.wait(0.1) do
 					local MurdererChar = Murderer.Character
 
 					--if not((MurdererChar or MurdererChar:FindFirstChild("HumanoidRootPart").CFrame) or (Character or Character:FindFirstChild("HumanoidRootPart").CFrame)) then
@@ -477,7 +483,7 @@ local function NewHighlight(Character: Model, target: Player)
 
 				KillMurdererCooldown = false
 
-				Character:FindFirstChildOfClass("Humanoid").Health = 0
+				-- Character:FindFirstChildOfClass("Humanoid").Health = 0
 			end
 		end,
 	})
