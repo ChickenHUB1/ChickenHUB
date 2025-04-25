@@ -445,7 +445,7 @@ local function NewHighlight(Character: Model, target: Player)
 						-- task.wait()
 						-- Character:FindFirstChild("HumanoidRootPart").Velocity = 0
 
-						Character:FindFirstChild("HumanoidRootPart").CFrame = MurdererChar:FindFirstChild("HumanoidRootPart").CFrame
+						Character:FindFirstChild("HumanoidRootPart").CFrame = MurdererChar:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(math.random(1, 5), math.random(1, 5), math.random(1, 5))
 						-- Thrust2.Location = MurdererChar:FindFirstChild("HumanoidRootPart").Position
 						-- Thrust2.Force = Vector3.new(1e5, 1e5, 1e5)
 						-- Character:FindFirstChildOfClass("Humanoid"):SetStateEnabled(Enum.HumanoidStateType.Seated, true)
