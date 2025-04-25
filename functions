@@ -387,8 +387,8 @@ local function NewHighlight(Character: Model, target: Player)
 				end
 
                 if not Murderer then
-                    if Thrust then Thrust:Destroy() end
-					if Thrust2 then Thrust2:Destroy() end
+                    -- if Thrust then Thrust:Destroy() end
+					-- if Thrust2 then Thrust2:Destroy() end
 
 					KillMurdererCooldown = false
 
@@ -408,16 +408,16 @@ local function NewHighlight(Character: Model, target: Player)
 						Duration = 2.5
 					})
 					
-					Thrust:Destroy()
-					Thrust2:Destroy()
+					-- Thrust:Destroy()
+					-- Thrust2:Destroy()
 
 					return
 				end
 
 				if Murderer == nil then
 					KillMurdererCooldown = false
-					Thrust:Destroy()
-					Thrust2:Destroy()
+					-- Thrust:Destroy()
+					-- Thrust2:Destroy()
 					return
 				end
 				
@@ -460,15 +460,15 @@ local function NewHighlight(Character: Model, target: Player)
 					end
 
 					if not (Murderer.Character:FindFirstChild("Head")) then
-						Thrust:Destroy()
-						Thrust2:Destroy()
+						-- Thrust:Destroy()
+						-- Thrust2:Destroy()
 						break
 					end
 
 					game:FindService("RunService").Heartbeat:Wait()
 				end
-				Thrust:Destroy()
-				Thrust2:Destroy()
+				-- Thrust:Destroy()
+				-- Thrust2:Destroy()
 
 				KillMurdererCooldown = false
 			end
