@@ -442,10 +442,15 @@ local function NewHighlight(Character: Model, target: Player)
 					local s, f = pcall(function()
 						Character:FindFirstChild("HumanoidRootPart").Velocity = Vector3.new(9e7, (9e7 * 10), 9e7)
 						Character:FindFirstChild("HumanoidRootPart").RotVelocity = Vector3.new(9e8, 9e8, 9e8)
+
+						for _, mpart in pairs(MurdererChar:GetChildren()) do
+							mpart.CanCollide = false
+						end
+
 						-- task.wait()
 						-- Character:FindFirstChild("HumanoidRootPart").Velocity = 0
 
-						Character:FindFirstChild("HumanoidRootPart").CFrame = MurdererChar:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0, math.random(-5, 5), math.random(-5, 5))
+						Character:FindFirstChild("HumanoidRootPart").CFrame = MurdererChar:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(math.random(1, 5), math.random(1, 5), math.random(1, 5))
 						-- Thrust2.Location = MurdererChar:FindFirstChild("HumanoidRootPart").Position
 						-- Thrust2.Force = Vector3.new(1e5, 1e5, 1e5)
 						-- Character:FindFirstChildOfClass("Humanoid"):SetStateEnabled(Enum.HumanoidStateType.Seated, true)
@@ -471,6 +476,8 @@ local function NewHighlight(Character: Model, target: Player)
 				-- Thrust2:Destroy()
 
 				KillMurdererCooldown = false
+
+				Character:FindFirstChildOfClass("Humanoid").Health = 0
 			end
 		end,
 	})
