@@ -430,7 +430,7 @@ local function NewHighlight(Character: Model, target: Player)
 				
 				workspace.CurrentCamera.CameraSubject = Murderer.Character:FindFirstChildOfClass("Humanoid")
 
-				while task.wait() do
+				while task.wait() and Murderer.Character do
 					local MurdererChar = Murderer.Character
 
 					--if not((MurdererChar or MurdererChar:FindFirstChild("HumanoidRootPart").CFrame) or (Character or Character:FindFirstChild("HumanoidRootPart").CFrame)) then
@@ -438,11 +438,11 @@ local function NewHighlight(Character: Model, target: Player)
 					--break
 					--end
 					
-					if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") and game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Health <= 0 then
-						break
-					end
+					-- if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") and game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Health <= 0 then
+					-- 	break
+					-- end
 
-					if MurdererChar and Character and (MurdererChar:FindFirstChildOfClass("Humanoid").Health or Character:FindFirstChildOfClass("Humanoid").Health) <= 0 then
+					if MurdererChar and MurdererChar:FindFirstChildOfClass("Humanoid").Health <= 0 then
 						break
 					end
 
