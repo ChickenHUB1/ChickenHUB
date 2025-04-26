@@ -393,7 +393,8 @@ local function NewHighlight(Character: Model, target: Player)
 					Rayfield:Notify({
 						Title = "Notification",
 						Content = "No murderer found",
-						Duration = 2.5
+						Duration = 2.5,
+						Image = 78318990297833
 					})
 
 					KillMurdererCooldown = false
